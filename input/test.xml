@@ -1,0 +1,1142 @@
+<?xml version="1.0"?>
+<Drawings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ntk="urn:us:gov:ic:ntk" xmlns:ism="urn:us:gov:ic:ism" schemaVersion="1.0.0" ism:DESVersion="9" ism:resourceElement="true" ism:createDate="2022-10-01" ism:classification="U" ism:ownerProducer="USA" ntk:DESVersion="7" xmlns="http://schemas.ngc.com/2019/01/Drawing">
+  <ntk:Access ism:classification="U" ism:ownerProducer="USA">
+    <ntk:AccessGroupList>
+      <ntk:AccessGroup ism:classification="U" ism:ownerProducer="USA">
+        <ntk:AccessSystemName ism:classification="U" ism:ownerProducer="USA">JMPS</ntk:AccessSystemName>
+        <ntk:AccessGroupValue ism:classification="U" ism:ownerProducer="USA">Mission Planners</ntk:AccessGroupValue>
+      </ntk:AccessGroup>
+    </ntk:AccessGroupList>
+  </ntk:Access>
+  <POC />
+  <drawingDataSets>
+    <dataSet ism:classification="U" ism:ownerProducer="USA">
+      <name>Drawing11</name>
+      <created>2022-10-01T22:12:50.6513826Z</created>
+      <createdBy>MPUser</createdBy>
+      <modified>2022-10-01T22:22:54.5903837Z</modified>
+      <modifiedBy>MPUser</modifiedBy>
+      <figures>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Ellipse</name>
+          <figureType>Ellipse</figureType>
+          <created>2022-10-01T22:12:58.9794323Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:12:58.9794323Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <angle>0</angle>
+          <fixed>false</fixed>
+          <horizontal>60698.526911626068</horizontal>
+          <vertical>66495.0038746781</vertical>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText xsi:nil="true" />
+          <embeddedTextJustification xsi:nil="true" />
+          <embeddedTextFamilyName xsi:nil="true" />
+          <embeddedTextStyle xsi:nil="true" />
+          <embeddedTextAnchorPosition xsi:nil="true" />
+          <embeddedTextBackground xsi:nil="true" />
+          <comment xsi:nil="true" />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>MPDSL.Drawing.FillStyleType</dataType>
+              <value>FDiagonal</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>MPDSL.Drawing.LineStyleType</dataType>
+              <value>Solid</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.912722707372328</latitude>
+              <longitude>-1.2981516811842126</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Line</name>
+          <figureType>Line</figureType>
+          <created>2022-10-01T22:13:04.5409034Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:13:04.5409034Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <closed>false</closed>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText />
+          <embeddedTextJustification>Center</embeddedTextJustification>
+          <embeddedTextFamilyName>Arial</embeddedTextFamilyName>
+          <embeddedTextSize>12</embeddedTextSize>
+          <embeddedTextStyle>Regular</embeddedTextStyle>
+          <embeddedTextForegroundColor>-65536</embeddedTextForegroundColor>
+          <embeddedTextBackgroundColor>-1</embeddedTextBackgroundColor>
+          <embeddedTextAnchorPosition>CenterCenter</embeddedTextAnchorPosition>
+          <embeddedTextBackground>None</embeddedTextBackground>
+          <comment xsi:nil="true" />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>MPDSL.Drawing.LineStyleType</dataType>
+              <value>Solid</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>MPDSL.Drawing.FillStyleType</dataType>
+              <value>FDiagonal</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.6244683970275</latitude>
+              <longitude>-1.8854742393381974</longitude>
+              <dtdId />
+            </point>
+            <point>
+              <index>1</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.628509345303362</latitude>
+              <longitude>-1.4637710755451705</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Line</name>
+          <figureType>Line</figureType>
+          <created>2022-10-01T22:13:07.4989916Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:13:07.4989916Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <closed>false</closed>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText />
+          <embeddedTextJustification>Center</embeddedTextJustification>
+          <embeddedTextFamilyName>Arial</embeddedTextFamilyName>
+          <embeddedTextSize>12</embeddedTextSize>
+          <embeddedTextStyle>Regular</embeddedTextStyle>
+          <embeddedTextForegroundColor>-65536</embeddedTextForegroundColor>
+          <embeddedTextBackgroundColor>-1</embeddedTextBackgroundColor>
+          <embeddedTextAnchorPosition>CenterCenter</embeddedTextAnchorPosition>
+          <embeddedTextBackground>None</embeddedTextBackground>
+          <comment xsi:nil="true" />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>MPDSL.Drawing.LineStyleType</dataType>
+              <value>Solid</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>MPDSL.Drawing.FillStyleType</dataType>
+              <value>FDiagonal</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.62581537978612</latitude>
+              <longitude>-1.3691314216246231</longitude>
+              <dtdId />
+            </point>
+            <point>
+              <index>1</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.786106328061983</latitude>
+              <longitude>-0.95995409437990409</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Line</name>
+          <figureType>Line</figureType>
+          <created>2022-10-01T22:13:10.6773923Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:13:10.6773923Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <closed>false</closed>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText />
+          <embeddedTextJustification>Center</embeddedTextJustification>
+          <embeddedTextFamilyName>Arial</embeddedTextFamilyName>
+          <embeddedTextSize>12</embeddedTextSize>
+          <embeddedTextStyle>Regular</embeddedTextStyle>
+          <embeddedTextForegroundColor>-65536</embeddedTextForegroundColor>
+          <embeddedTextBackgroundColor>-1</embeddedTextBackgroundColor>
+          <embeddedTextAnchorPosition>CenterCenter</embeddedTextAnchorPosition>
+          <embeddedTextBackground>None</embeddedTextBackground>
+          <comment xsi:nil="true" />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>MPDSL.Drawing.LineStyleType</dataType>
+              <value>Solid</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>MPDSL.Drawing.FillStyleType</dataType>
+              <value>FDiagonal</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.873660207372328</latitude>
+              <longitude>-0.8875825943230149</longitude>
+              <dtdId />
+            </point>
+            <point>
+              <index>1</index>
+              <nameFix xsi:nil="true" />
+              <latitude>14.21175287978612</latitude>
+              <longitude>-0.89593315202188673</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Rectangle</name>
+          <figureType>Rectangle</figureType>
+          <created>2022-10-01T22:13:18.6313362Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:13:38.8731524Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <angle>0</angle>
+          <fixed>false</fixed>
+          <horizontal>31616.35135794726</horizontal>
+          <vertical>54759.720851372855</vertical>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText xsi:nil="true" />
+          <embeddedTextJustification xsi:nil="true" />
+          <embeddedTextFamilyName xsi:nil="true" />
+          <embeddedTextStyle xsi:nil="true" />
+          <embeddedTextAnchorPosition xsi:nil="true" />
+          <embeddedTextBackground xsi:nil="true" />
+          <comment />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>JMPS.Interop.JMPSMap.FillStyleEnum</dataType>
+              <value>UTIL_FILL_FDIAG</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>JMPS.Interop.JMPSMap.LineStyleEnum</dataType>
+              <value>UTIL_LINE_SOLID</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.6244683970275</latitude>
+              <longitude>-1.4108857909057357</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Bullseye</name>
+          <figureType>Bullseye</figureType>
+          <created>2022-10-01T22:20:20.3627019Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:21:45.5644882Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <angle>45</angle>
+          <horizontal>486089.238845144</horizontal>
+          <vertical>486089.238845144</vertical>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16776961</labelForegroundColor>
+          <labelBackgroundColor>-16777216</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText xsi:nil="true" />
+          <embeddedTextJustification xsi:nil="true" />
+          <embeddedTextFamilyName xsi:nil="true" />
+          <embeddedTextStyle xsi:nil="true" />
+          <embeddedTextAnchorPosition xsi:nil="true" />
+          <embeddedTextBackground xsi:nil="true" />
+          <comment />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>JMPS.Interop.JMPSMap.LineStyleEnum</dataType>
+              <value>UTIL_LINE_SOLID</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16776961</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16776961</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>JMPS.Interop.JMPSMap.FillStyleEnum</dataType>
+              <value>UTIL_FILL_NONE</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16776961</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+          </attributes>
+          <bullseye>
+            <distanceBetweenRing>60761.154855643</distanceBetweenRing>
+            <numberOfRings>8</numberOfRings>
+            <angleBetweenRadials>45</angleBetweenRadials>
+            <bearingType>MagneticNorth</bearingType>
+            <magVar>-1.8013106398415804</magVar>
+            <calculateMagVar>true</calculateMagVar>
+            <displayRings>true</displayRings>
+            <displayRadials>true</displayRadials>
+            <displayBearing>true</displayBearing>
+            <displayRangeOnAllRadials>true</displayRangeOnAllRadials>
+            <displayBlackOutline>false</displayBlackOutline>
+            <displayLabel>false</displayLabel>
+            <minimized>false</minimized>
+            <fixBearing>0</fixBearing>
+            <fixDistance>0</fixDistance>
+            <bearingFamilyName>Arial</bearingFamilyName>
+            <bearingSize>12</bearingSize>
+            <bearingStyle>Regular</bearingStyle>
+            <bearingForegroundColor>-16776961</bearingForegroundColor>
+            <bearingBackgroundColor>-16777216</bearingBackgroundColor>
+            <bearingAnchorPosition>CenterCenter</bearingAnchorPosition>
+            <bearingBackground>Shadow</bearingBackground>
+          </bullseye>
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix />
+              <latitude>14.24744792288957</latitude>
+              <longitude>-2.3857775974290556</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Corridor</name>
+          <figureType>Corridor</figureType>
+          <created>2022-10-01T22:22:17.5004839Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:22:17.5004839Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <horizontal>30380</horizontal>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText />
+          <embeddedTextJustification>Center</embeddedTextJustification>
+          <embeddedTextFamilyName>Arial</embeddedTextFamilyName>
+          <embeddedTextSize>12</embeddedTextSize>
+          <embeddedTextStyle>Regular</embeddedTextStyle>
+          <embeddedTextForegroundColor>-65536</embeddedTextForegroundColor>
+          <embeddedTextBackgroundColor>-1</embeddedTextBackgroundColor>
+          <embeddedTextAnchorPosition>CenterCenter</embeddedTextAnchorPosition>
+          <embeddedTextBackground>None</embeddedTextBackground>
+          <comment xsi:nil="true" />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>MPDSL.Drawing.LineStyleType</dataType>
+              <value>Solid</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>MPDSL.Drawing.FillStyleType</dataType>
+              <value>FDiagonal</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_GREAT_CIRCLE</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-65536</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.870292750475777</latitude>
+              <longitude>-0.97597848383557051</longitude>
+              <dtdId />
+            </point>
+            <point>
+              <index>1</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.656122491855086</latitude>
+              <longitude>-0.69067856450026532</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+        <figure ism:classification="U" ism:ownerProducer="USA">
+          <name>Axis</name>
+          <figureType>Axis</figureType>
+          <created>2022-10-01T22:22:29.0222359Z</created>
+          <createdBy>MPUser</createdBy>
+          <modified>2022-10-01T22:22:54.5903837Z</modified>
+          <modifiedBy>MPUser</modifiedBy>
+          <horizontal>0.2</horizontal>
+          <crossed>false</crossed>
+          <orbitDirection xsi:nil="true" />
+          <label />
+          <labelFamilyName>Arial</labelFamilyName>
+          <labelSize>12</labelSize>
+          <labelStyle>Regular</labelStyle>
+          <labelForegroundColor>-16777216</labelForegroundColor>
+          <labelBackgroundColor>-1040</labelBackgroundColor>
+          <labelAnchorPosition>CenterCenter</labelAnchorPosition>
+          <labelBackground>SolidRect</labelBackground>
+          <embeddedText xsi:nil="true" />
+          <embeddedTextJustification xsi:nil="true" />
+          <embeddedTextFamilyName xsi:nil="true" />
+          <embeddedTextStyle xsi:nil="true" />
+          <embeddedTextAnchorPosition xsi:nil="true" />
+          <embeddedTextBackground xsi:nil="true" />
+          <comment />
+          <status xsi:nil="true" />
+          <tooltip xsi:nil="true" />
+          <attributes>
+            <attribute>
+              <key>FillStyle</key>
+              <dataType>JMPS.Interop.JMPSMap.FillStyleEnum</dataType>
+              <value>UTIL_FILL_DIAGCROSS</value>
+            </attribute>
+            <attribute>
+              <key>FontStyle</key>
+              <dataType>System.Int32</dataType>
+              <value>0</value>
+            </attribute>
+            <attribute>
+              <key>FontFamily</key>
+              <dataType>System.String</dataType>
+              <value>Arial</value>
+            </attribute>
+            <attribute>
+              <key>BorderColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>LineWidth</key>
+              <dataType>System.Double</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundType</key>
+              <dataType>JMPS.Interop.JMPSMap.BackgroundTypeEnum</dataType>
+              <value>UTIL_BG_RECT</value>
+            </attribute>
+            <attribute>
+              <key>LineType</key>
+              <dataType>JMPS.Interop.JMPSMap.LineTypeEnum</dataType>
+              <value>UTIL_SIMPLE_LINE</value>
+            </attribute>
+            <attribute>
+              <key>BorderWidth</key>
+              <dataType>System.Int32</dataType>
+              <value>1</value>
+            </attribute>
+            <attribute>
+              <key>FontForegroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16777216</value>
+            </attribute>
+            <attribute>
+              <key>LineStyle</key>
+              <dataType>JMPS.Interop.JMPSMap.LineStyleEnum</dataType>
+              <value>UTIL_LINE_SOLID</value>
+            </attribute>
+            <attribute>
+              <key>FontBackgroundColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-1040</value>
+            </attribute>
+            <attribute>
+              <key>FontSize</key>
+              <dataType>System.Single</dataType>
+              <value>12</value>
+            </attribute>
+            <attribute>
+              <key>LineColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16711936</value>
+            </attribute>
+            <attribute>
+              <key>FillColor</key>
+              <dataType>System.Drawing.Color</dataType>
+              <value>-16711936</value>
+            </attribute>
+          </attributes>
+          <bullseye xsi:nil="true" />
+          <points>
+            <point>
+              <index>0</index>
+              <nameFix xsi:nil="true" />
+              <latitude>14.196262578061983</latitude>
+              <longitude>-1.9000718810972428</longitude>
+              <dtdId />
+            </point>
+            <point>
+              <index>1</index>
+              <nameFix xsi:nil="true" />
+              <latitude>13.965928526337846</latitude>
+              <longitude>-1.6412143933100876</longitude>
+              <dtdId />
+            </point>
+          </points>
+          <geoZone>
+            <regionType>No-Fly Zone</regionType>
+            <altitudeUpperEnabled>true</altitudeUpperEnabled>
+            <altitudeUpper>15000</altitudeUpper>
+            <verticalComponentUpper>MSL</verticalComponentUpper>
+            <altitudeLowerEnabled>true</altitudeLowerEnabled>
+            <altitudeLower>0</altitudeLower>
+            <verticalComponentLower>MSL</verticalComponentLower>
+            <existenceStart>0001-01-01T08:00:00Z</existenceStart>
+            <existenceEnd>0001-01-01T08:00:00Z</existenceEnd>
+            <timePeriods>
+              <timePeriod>
+                <index>0</index>
+                <startTime>2007-01-01T08:00:00Z</startTime>
+                <span>288000000000</span>
+                <interval>0</interval>
+              </timePeriod>
+            </timePeriods>
+          </geoZone>
+          <hyperlinks />
+          <track xsi:nil="true" />
+        </figure>
+      </figures>
+    </dataSet>
+  </drawingDataSets>
+</Drawings>
