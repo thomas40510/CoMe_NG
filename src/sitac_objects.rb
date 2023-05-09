@@ -31,6 +31,10 @@ class Point
     @latitude = latitude
     @longitude = longitude
   end
+
+  def accept(visitor)
+    visitor.visit_point self
+  end
 end
 
 # Represents a line, given a list of points
@@ -45,6 +49,10 @@ class Line
     points.each do |point|
       @points << as_point(point)
     end
+  end
+
+  def accept(visitor)
+    visitor.visit_line self
   end
 end
 
@@ -68,6 +76,10 @@ class Rectangle
     @horizontal = horizontal
     @vertical = vertical
   end
+
+  def accept(visitor)
+    visitor.visit_rectangle self
+  end
 end
 
 # Represents a bull's eye, given its characteristics (center, radii, nbr of rings, distance between rings)
@@ -89,6 +101,10 @@ class Bullseye
     @rings = rings
     @ring_distance = ring_distance
   end
+
+  def accept(visitor)
+    visitor.visit_bullseye self
+  end
 end
 
 # Represents a ellipse, given its center and radii
@@ -105,6 +121,10 @@ class Ellipse
     @hradius = hradius
     @vradius = vradius
   end
+
+  def accept(visitor)
+    visitor.visit_ellipse self
+  end
 end
 
 # Represents a corridor, given its starting point, its ending point and its width
@@ -120,6 +140,10 @@ class Corridor
     @start_point = as_point(startpt)
     @end_point = as_point(endpt)
     @width = width
+  end
+
+  def accept(visitor)
+    visitor.visit_corridor self
   end
 end
 
