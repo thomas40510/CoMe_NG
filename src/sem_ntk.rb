@@ -7,7 +7,7 @@ class NTKSemantics
   def initialize
     @regexes = {
       body: %r{<figures>((.|\n)*)</figures>},
-      figure: %r{<figure.*?>((.|\n)*)</figure>},
+      figure: %r{<figure .*?>((.|\n)*)</figure>},
       figType: %r{<figureType>(.*)</figureType>},
       figName: %r{<name>(.*)</name>},
       figHoriz: %r{<horizontal>(.*)</horizontal>},
