@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'strscan'
+
 require_relative 'token'
 require_relative 'sem_ntk'
 
@@ -18,6 +18,7 @@ module SITACLexer
       @semset = syntax == 'ntk' ? NTKSemantics.new.regexes : nil
       puts '=== Creating Lexer ==='
       @code = File.read(file)
+      @code = @code.to_s.gsub(/\s{2,}/, "\n")
       gen_lexer
       @tokens = []
       printf '=== done creating lexer ==='
@@ -42,9 +43,18 @@ module SITACLexer
     def get_tokens
       # get matches for rules
       @rules.each do |rule, regex|
-        val = @code.scan(regex).to_s
-        line = @code.lines.index(val)
-        @tokens << Token.new(rule, val, line) if val
+        # for each match, create a token
+        puts "Getting tokens for #{rule} => #{regex}"
+        puts "matches: #{@code.scan(regex)}"
+        val = []
+        # @code.scan(regex).each do |match|
+        #   val << match.first
+        # end
+        @tokens << Token.new(rule, @code.scan(regex), 0)
+
+        # val = @code.scan(regex)[-1].to_s.gsub('\\r\\n', '').gsub(/\s{2,}/, '')
+        # line = @code.lines.index(val)
+        # @tokens << Token.new(rule, val, line) if val
         printf "Read #{@tokens.length} lexems from #{@code.length} bytes of code.\r"
       end
       @tokens
@@ -54,6 +64,7 @@ module SITACLexer
       puts "\n=== tokenizing ==="
       get_tokens
       puts "\n=== done tokenizing ==="
+      @tokens
     end
   end
 
