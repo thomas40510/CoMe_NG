@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 require 'strscan'
 require_relative 'token'
+require_relative 'sem_ntk'
 
 # Lexer module for Melissa Converter NG
 # @author PRV
 # @note This module contains the lexer and its subclasses
 # @version 1.0.0
 # @date 2023
-module SITAC_Lexer
+module SITACLexer
   # Generic Lexer, capable of accepting any set of custom rules
   # @author JCLL
   # @note This is a generic lexer, it can be used to tokenize any language
@@ -44,6 +45,7 @@ module SITAC_Lexer
       raise 'Unrecognized token'
     end
 
+# TODO: rewrite to tokenize based on tags, not on chars
     def get_token
       pos = position
       @rules.each do |rule, regex|
@@ -67,7 +69,7 @@ module SITAC_Lexer
       tokens = []
       until @strscan.eos?
         tokens << get_token
-        printf "Read #{tokens.length} tokens from #{code.length} bytes of code.\r"
+        printf "Read #{tokens.length} lexems from #{code.length} bytes of code.\r"
       end
       puts "\n=== done tokenizing ==="
       tokens
@@ -108,5 +110,8 @@ module SITAC_Lexer
     filename = 'input/test.xml'
     lexer = XMLLexer.new(filename)
     tokens = lexer.tokenize(File.read(filename))
+    puts tokens
+    # parser = NorthropParser.new(tokens)
+    # parser.parse_body
   end
 end
