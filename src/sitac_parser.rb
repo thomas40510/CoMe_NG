@@ -82,8 +82,7 @@ module SITACParser
 
     def parse_bullseye(token, name)
       # [type, name, latitude, longitude, horiz, vert, nbr_of_rings, distance_between_rings]
-      pos = token.scan(@regexes[:figPoint]).first.first
-      pos = parse_point(pos, '')[2..3]
+      pos = parse_point(token.scan(@regexes[:figPoint]).first.first, '')[2..3]
       horiz, vert = radii(token)
       rings = token.match(@regexes[:bullsRings])[1].to_i
       dist = token.match(@regexes[:bullsDist])[1].to_f
