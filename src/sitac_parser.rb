@@ -36,7 +36,7 @@ module SITACParser
 
         puts "Found figure #{token.value}"
         token.value.each do |fig|
-          @figures << parse_figure(fig)
+          @figures << parse_figure(fig.first)
         end
       end
       puts '=== done parsing figures ==='
@@ -44,43 +44,60 @@ module SITACParser
     end
 
     def parse_figure(token)
-      type = token.scan(@regexes[:figType]).first.first.to_s.downcase
-      name = token.scan(@regexes[:figName]).first.first.to_s
+      type = token.match(@regexes[:figType])[1].downcase
+      name = token.match(@regexes[:figName])[1]
       puts "Parsing figure #{name} of type #{type}"
-      @figures << send("parse_#{type}", token, name)
+      val = send("parse_#{type}", token, name)
+      puts "Parsed figure #{name} of type #{type} with value #{val}"
+      val unless val.nil?
     rescue StandardError => e
       puts "Error while parsing figure: #{e}"
     end
 
     def parse_point(token, name)
-      latitude = token.scan(@regexes[:ptLatitude]).to_f
-      longitude = token.scan(@regexes[:ptLongitude]).to_f
+      latitude = token.match(@regexes[:ptLatitude])[1].to_f
+      longitude = token.match(@regexes[:ptLongitude])[1].to_f
+      puts "Parsed point #{name} at #{latitude}, #{longitude}"
       ['point', name, latitude, longitude]
     end
 
     def radii(token)
-      horiz = token.scan(@regexes[:figHoriz]).to_f
-      vert = token.scan(@regexes[:figVert]).to_f
+      horiz = token.match(@regexes[:figHoriz])[1].to_f
+      vert = token.match(@regexes[:figVert])[1].to_f
       [horiz, vert]
     end
 
     def parse_line(token, name)
       points = token.scan(@regexes[:figPoint])
+      puts "Points: #{points}"
       coords = []
-      points.first.each do |point|
-        coords << parse_point(point, '')[2..3]
+      puts "found #{points.length} points"
+      points.each do |point|
+        puts "Parsing point #{point}"
+        coords << parse_point(point.first, '')[2..3]
+        puts "Coords: #{coords}"
       end
       ['line', name, coords]
     end
 
     def parse_bullseye(token, name)
       # [type, name, latitude, longitude, horiz, vert, nbr_of_rings, distance_between_rings]
-      pos = parse_point(token.scan(@regexes[:figPoint]), '')[2..3]
+      pos = token.scan(@regexes[:figPoint]).first.first
+      pos = parse_point(pos, '')[2..3]
       horiz, vert = radii(token)
-      rings = token.scan(@regexes[:bullsRings]).to_i
-      dist = token.scan(@regexes[:bullsDist]).to_f
+      rings = token.match(@regexes[:bullsRings])[1].to_i
+      dist = token.match(@regexes[:bullsDist])[1].to_f
       ['bullseye', name, pos[0], pos[1], horiz, vert, rings, dist]
     end
+
+    def parse_ellipse(token, name)
+      ['ellipse', name]
+    end
+
+    def parse_rectangle(token, name)
+      ['rectangle', name]
+    end
+
   end
 
   if __FILE__ == $PROGRAM_NAME
