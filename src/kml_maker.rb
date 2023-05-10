@@ -132,10 +132,11 @@ class KMLMaker < Visitor
 
   def export(filename)
     # create file
-    kml_file = File.open(filename, 'w')
+    file = "output/#{filename}"
+    kml_file = File.open(file, 'w')
     kml_file.write(@content)
     kml_file.close
-    Log.info("Successfully exported KML file #{filename}!", 'CoMe_KMLMaker')
+    Log.info("Successfully exported KML file #{file}!", 'CoMe_KMLMaker')
 
   rescue StandardError => e
     if e.message.include?('No such file or directory')

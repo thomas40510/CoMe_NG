@@ -55,7 +55,7 @@ class NorthropParser
     val = send("parse_#{type}", token, name)
     val unless val.nil?
   rescue StandardError => e
-    Log.err("Error while parsing figure, I'm ignoring it (#{e})", 'CoMe_Parser')
+    Log.err("Error while parsing figure #{name}, I'm ignoring it.", 'CoMe_Parser')
   end
 
   def radii(token)
@@ -113,7 +113,7 @@ class NorthropParser
   end
 
 rescue StandardError => e
-  Log.error("Error while processing: #{e.message}", 'CoMe_Parser')
+  Log.error("Error while processing: #{e}", 'CoMe_Parser')
 
 end
 
