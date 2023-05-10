@@ -43,6 +43,11 @@ ruby come_ng.rb input/test.xml
 ruby come_ng.rb -h
 ```
 
+- Pour afficher l'AST :
+```bash
+ruby come_ng.rb input/test.xml -a
+```
+
 L'export est alors réalisé dans le répertoire `output`, et il est possible de l'afficher sur Google Earth, par exemple.
 
 ## Structure du projet
