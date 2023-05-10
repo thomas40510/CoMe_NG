@@ -19,5 +19,9 @@ module LogUtils
   def Log.info(message = 'Debug', tag = '', after = "\n")
     printf "[Log/I] #{tag} : #{message}#{after}"
   end
+
+  def Log.succ(message = 'Success', tag = '', after = "\n")
+    printf "\e[32m[Log/S] #{tag} : #{message}\e[0m#{after}"
+  end
 end
 

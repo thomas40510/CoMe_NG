@@ -12,7 +12,7 @@ module KMLUtils
   end
 
   # Create circle around a center
-  def create_circle(center, radius, nb_points = 300)
+  def create_circle(center, radius, nb_points = 400)
     x, y = center
     points = []
     angle_step = 2 * Math::PI / nb_points
@@ -22,14 +22,14 @@ module KMLUtils
     points
   end
 
-  def create_ellipse(center, hradius, vradius, angle = 0, nb_points = 100)
+  def create_ellipse(center, hradius, vradius, angle = 0, nb_points = 400)
     x, y = center
     points = []
-    start_angle = 0
+    angle = angle * Math::PI / 180
     angle_step = 2 * Math::PI / nb_points
-    nb_points.times do
-      points << [x + hradius * Math.cos(start_angle), y + vradius * Math.sin(start_angle)]
-      start_angle += angle_step
+    nb_points.times do |i|
+      points << [x + hradius * Math.cos(i * angle_step + angle),
+                 y + vradius * Math.sin(i * angle_step + angle)]
     end
     points << points[0]
     points
@@ -116,8 +116,9 @@ class KMLMaker < Visitor
     @figures = []
   end
 
-  def build(figures)
+  def build(figures, name = "SITAC_#{Time.now.strftime('%Y%m%d_%H%M%S')}")
     @figures = figures
+    @name = name
     header
     @figures.each do |figure|
       next if figure.nil?
@@ -125,6 +126,8 @@ class KMLMaker < Visitor
       figure.accept(self)
     end
     footer
+    Log.succ("Successfully built KML code for SITAC #{@name}! It is #{@content.count("\n")} lines long.",
+             'CoMe_KMLMaker')
   end
 
   def export(filename)
@@ -132,6 +135,7 @@ class KMLMaker < Visitor
     kml_file = File.open(filename, 'w')
     kml_file.write(@content)
     kml_file.close
+    Log.info("Successfully exported KML file #{filename}!", 'CoMe_KMLMaker')
 
   rescue StandardError => e
     if e.message.include?('No such file or directory')
@@ -144,9 +148,13 @@ class KMLMaker < Visitor
   end
 
   def header
-    hdr_file = File.open('src/raw/hdrsitac.txt', 'r')
-    hdr = hdr_file.read
-    @content += hdr.to_s
+    hdr_kml = '<?xml version="1.0" encoding="UTF-8"?>
+                <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+                <Document>'
+    hdr_kml += "<name>#{@name}</name>"
+    hdr_file = File.open('src/raw/styles_sitac.xml', 'r')
+    hdr_kml += hdr_file.read.to_s
+    @content += hdr_kml
   end
 
   def footer
@@ -314,6 +322,6 @@ if __FILE__ == $PROGRAM_NAME
   parser.parse_figures
   figures = parser.figures
   maker = KMLMaker.new
-  maker.build(figures)
+  maker.build(figures, parser.name)
   maker.export('output/test.kml')
 end

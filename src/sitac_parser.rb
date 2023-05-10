@@ -25,10 +25,11 @@ end
 # @date 2023
 class NorthropParser
   include SITACParser
-  attr_reader :figures, :tokens
+  attr_reader :figures, :tokens, :name
 
   def initialize(tokens)
     @tokens = tokens
+    @name = @tokens.find { |token| token.type == ':figName' }.value.first.first
     @figures = []
     @sems, @regexes = NTKSemantics.new.sems_and_regexes
   end
