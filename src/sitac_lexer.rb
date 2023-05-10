@@ -40,7 +40,6 @@ class XMLLexer
     # get matches for rules
     @rules.each do |rule, regex|
       # for each match, create a token
-      Log.debug("Matching rule #{rule} with regex #{regex}", 'CoMe_Lexer', "\r")
       val = []
       # @code.scan(regex).each do |match|
       #   val << match.first
