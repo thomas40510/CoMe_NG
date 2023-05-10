@@ -40,7 +40,8 @@ class NorthropParser
       next unless token.is_a? ':figure'
 
       token.value.each do |fig|
-        @figures << parse_figure(fig.first)
+        figure = parse_figure(fig.first)
+        @figures << figure unless figure.nil?
       end
     end
     Log.info("Done! #{@figures.length} figures parsed", 'CoMe_Parser')
