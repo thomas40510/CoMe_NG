@@ -11,30 +11,35 @@ module KMLUtils
     meters / 111_111
   end
 
-  def create_circle(center, radius, nb_points = 1000)
+  # Create circle around a center
+  def create_circle(center, radius, nb_points = 300)
+    x, y = center
     points = []
-    angle = 0
-    angle_step = 360 / nb_points
-    nb_points.times do
-      points << [center[0] + radius * Math.cos(angle), center[1] + radius * Math.sin(angle)]
-      angle += angle_step
+    angle_step = 2 * Math::PI / nb_points
+    nb_points.times do |i|
+      points << [x + radius * Math.cos(i * angle_step), y + radius * Math.sin(i * angle_step)]
     end
     points
   end
 
-  def create_ellipse(center, hradius, vradius, angle = 0, nb_points = 1000)
+  def create_ellipse(center, hradius, vradius, angle = 0, nb_points = 100)
+    x, y = center
     points = []
-    angle_step = 360 / nb_points
+    start_angle = 0
+    angle_step = 2 * Math::PI / nb_points
     nb_points.times do
-      points << [center[0] + hradius * Math.cos(angle), center[1] + vradius * Math.sin(angle)]
-      angle += angle_step
+      points << [x + hradius * Math.cos(start_angle), y + vradius * Math.sin(start_angle)]
+      start_angle += angle_step
     end
+    points << points[0]
     points
   end
 
   def create_line(center, length, angle = 0)
     points = []
+    angle = angle * Math::PI / 180
     points << [center[0] + length * Math.cos(angle), center[1] + length * Math.sin(angle)]
+    points << [center[0], center[1]]
     points << [center[0] - length * Math.cos(angle), center[1] - length * Math.sin(angle)]
     points
   end
@@ -186,7 +191,7 @@ class KMLMaker < Visitor
                     <LinearRing>
                       <coordinates>"
     polygon.points.each do |point|
-      kml_poly += "#{point.longitude},#{point.latitude},0 "
+      kml_poly += "#{point.longitude},#{point.latitude},0\n"
     end
     kml_poly += '</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>'
     @content += kml_poly
@@ -210,12 +215,11 @@ class KMLMaker < Visitor
 
     points_thick = []
     points_thin = []
-    points_cross = []
 
     nbrings = bullseye.rings
-    distance = meters_to_degrees(bullseye.ring_distance)
+    distance = meters_to_degrees(bullseye.ring_distance) / 2
     radius = meters_to_degrees(bullseye.vradius)
-    smallest_radius = radius + (nbrings - 1) * distance
+    smallest_radius = radius - (nbrings * distance)
     center_coords = [bullseye.center.latitude, bullseye.center.longitude]
     # thick lines (main rings, every 2 rings)
     (0..nbrings).step(2) do |i|
@@ -227,50 +231,46 @@ class KMLMaker < Visitor
       rad = smallest_radius + i * distance
       points_thin << create_circle(center_coords, rad)
     end
-    # cross lines (every 30 degrees)
-    12.times do |i|
-      points_cross << create_line(center_coords, 1.02 * radius, i * 30)
-    end
 
     kml_bullseye_main = "<Placemark>
                     <name>#{bullseye.name}</name>
                     <styleUrl>#style_bulls</styleUrl>
-                    <Polygon>
-                      <outerBoundaryIs>
-                        <LinearRing>
-                          <coordinates>"
+                    <MultiGeometry>"
     points_thick.each do |point|
+      kml_bullseye_main += '<Polygon><outerBoundaryIs><LinearRing><coordinates>'
       point.each do |pt|
-        kml_bullseye_main += "#{pt[1]},#{pt[0]},0 "
+        kml_bullseye_main += "#{pt[1]},#{pt[0]},0\n"
       end
+      kml_bullseye_main += '</coordinates></LinearRing></outerBoundaryIs></Polygon>'
     end
-    kml_bullseye_main += '</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>'
+    kml_bullseye_main += '</MultiGeometry></Placemark>'
     kml_bulls_secondary = "<Placemark>
                     <name>#{bullseye.name}_second</name>
                     <styleUrl>#style_bulls_thin</styleUrl>
-                    <Polygon>
-                      <outerBoundaryIs>
-                        <LinearRing>
-                          <coordinates>"
+                    <MultiGeometry>"
     points_thin.each do |point|
+      kml_bulls_secondary += '<Polygon><outerBoundaryIs><LinearRing><coordinates>'
       point.each do |pt|
-        kml_bulls_secondary += "#{pt[1]},#{pt[0]},0 "
+        kml_bulls_secondary += "#{pt[1]},#{pt[0]},0\n"
       end
+      kml_bulls_secondary += '</coordinates></LinearRing></outerBoundaryIs></Polygon>'
     end
-    kml_bulls_secondary += '</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>'
+    kml_bulls_secondary += '</MultiGeometry></Placemark>'
     kml_bulls_cross = "<Placemark>
                     <name>#{bullseye.name}_lines</name>
                     <styleUrl>#style_line</styleUrl>
                     <MultiGeometry>"
-    points_cross.each do |point|
+    n = 45
+    (0..360).step(n) do |i|
       kml_bulls_cross += "<LineString>
-                            <coordinates>"
-      point.each do |pt|
-        kml_bulls_cross += "#{pt[1]},#{pt[0]},0 "
+                      <coordinates>"
+      pt_cross = create_line(center_coords, radius, i)
+      pt_cross.each do |pt|
+        kml_bulls_cross += "#{pt[1]},#{pt[0]},0\n"
       end
-      kml_bulls_cross += '</coordinates>
-                          </LineString>'
+      kml_bulls_cross += '</coordinates></LineString>'
     end
+
     kml_bulls_cross += '</MultiGeometry></Placemark>'
     @content += kml_bullseye_main + kml_bulls_secondary + kml_bulls_cross
   end
@@ -289,9 +289,13 @@ class KMLMaker < Visitor
                         <LinearRing>
                           <coordinates>"
     points.each do |point|
-      kml_ellipse += "#{point[1]},#{point[0]},0 "
+      kml_ellipse += "#{point[1]},#{point[0]},0\n"
     end
-    kml_ellipse += '</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>'
+    kml_ellipse += "</coordinates>
+                    </LinearRing>
+                  </outerBoundaryIs>
+                </Polygon>
+              </Placemark>"
     @content += kml_ellipse
   end
 

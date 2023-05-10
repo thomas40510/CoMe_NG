@@ -96,8 +96,8 @@ class Bullseye
   def initialize(name, center, hradius, vradius, rings, ring_distance)
     @name = name
     @center = as_point(center)
-    @hradius = hradius
-    @vradius = vradius
+    @hradius = hradius / 2
+    @vradius = vradius / 2
     @rings = rings
     @ring_distance = ring_distance
   end
@@ -118,8 +118,8 @@ class Ellipse
   def initialize(name, center, hradius, vradius)
     @name = name
     @center = as_point(center)
-    @hradius = hradius
-    @vradius = vradius
+    @hradius = hradius / 2
+    @vradius = vradius / 2
   end
 
   def accept(visitor)
