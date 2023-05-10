@@ -19,6 +19,7 @@ require_relative 'log_utils'
 output = "sitac_#{Time.now.strftime('%Y%m%d%H%M%S')}.kml"
 name = "sitac_#{Time.now.strftime('%Y%m%d%H%M%S')}"
 type = 'ntk'
+show_ast = false
 
 
 # read command line arguments
@@ -28,6 +29,7 @@ args.each do |arg|
     puts 'Usage: ruby come_ng.rb <file.xml> -o [file.kml] -s [ntk/melissa]'
     puts '-o : output file'
     puts '-s : syntax (ntk/melissa)'
+    puts '-a : prettyprint the AST'
     puts '-h : help'
     exit
   end
@@ -38,6 +40,8 @@ args.each do |arg|
     # TODO: implment Melissa semantics
     nil
   end
+
+  show_ast = arg == '-a'
 
 rescue StandardError => e
   Log.err("Unknown request (#{e})", 'CoMe_NG')
@@ -51,10 +55,17 @@ tokens = lexer.tokenize
 parser = NorthropParser.new(tokens)
 parser.parse_figures
 
-kmlmaker = KMLMaker.new
-kmlmaker.build(parser.figures, name)
+if show_ast
+  ast = ASTTree.new
+  ast.build(parser.figures)
+  ast.pretty_print
+else
+  kmlmaker = KMLMaker.new
+  kmlmaker.build(parser.figures, name)
 
-kmlmaker.export(output)
+  kmlmaker.export(output)
+end
+
 
 
 
