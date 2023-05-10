@@ -3,6 +3,7 @@
 require_relative 'sitac_lexer'
 require_relative 'sem_ntk'
 require_relative 'sitac_objects'
+require_relative 'log_utils'
 
 # Parser for Melissa Converter NG
 # @note This module contains the parser and its subclasses
@@ -10,7 +11,7 @@ require_relative 'sitac_objects'
 # @version 1.0.0
 # @date 2023
 module SITACParser
-  include SITACLexer
+  include LogUtils
   # Parsing exception class
   class ParsingException < StandardError
     @message = 'Error while parsing SITAC file'
@@ -108,6 +109,9 @@ class NorthropParser
     width = token.match(@regexes[:figHoriz])[1].to_f
     Corridor.new(name, startpt, endpt, width)
   end
+
+rescue StandardError => e
+  Log.error("Error while processing: #{e.message}", 'CoMe_Parser')
 
 end
 

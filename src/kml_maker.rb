@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'sitac_objects'
+require_relative 'log_utils'
 
 # Utilities for KML generation
 # @version 1.0.0
@@ -45,6 +46,7 @@ end
 # @version 1.0.0
 # @date 2023
 class Visitor
+  include LogUtils
   def initialize
     @content = ''
   end
@@ -109,14 +111,42 @@ class KMLMaker < Visitor
     @figures = []
   end
 
+  def build(figures)
+    @figures = figures
+    header
+    @figures.each do |figure|
+      next if figure.nil?
+
+      figure.accept(self)
+    end
+    footer
+  end
+
+  def export(filename)
+    # create file
+    kml_file = File.open(filename, 'w')
+    kml_file.write(@content)
+    kml_file.close
+
+  rescue StandardError => e
+    if e.message.include?('No such file or directory')
+      # create dir
+      dir = File.dirname(filename)
+      Dir.mkdir(dir) unless File.exist?(dir)
+      retry
+    end
+    Log.err("Cannot create KML file #{filename}! Got error #{e}", 'CoMe_KMLMaker')
+  end
+
   def header
     hdr_file = File.open('src/raw/hdrsitac.txt', 'r')
-    hdr_file.read
-    @content += hdr_file.read
+    hdr = hdr_file.read
+    @content += hdr.to_s
   end
 
   def footer
-    ftr = "/n</Document>\n</kml>"
+    ftr = "</Document>
+          </kml>"
     @content += ftr
   end
 
@@ -183,7 +213,7 @@ class KMLMaker < Visitor
     points_cross = []
 
     nbrings = bullseye.rings
-    distance = meters_to_degrees(bullseye.distance)
+    distance = meters_to_degrees(bullseye.ring_distance)
     radius = meters_to_degrees(bullseye.vradius)
     smallest_radius = radius + (nbrings - 1) * distance
     center_coords = [bullseye.center.latitude, bullseye.center.longitude]
@@ -268,4 +298,18 @@ class KMLMaker < Visitor
   def visit_corridor(corridor)
     nil
   end
+end
+
+if __FILE__ == $PROGRAM_NAME
+  require_relative 'sitac_parser'
+  require_relative 'sitac_lexer'
+
+  lexer = XMLLexer.new('input/test.xml')
+  tokens = lexer.tokenize
+  parser = NorthropParser.new(tokens)
+  parser.parse_figures
+  figures = parser.figures
+  maker = KMLMaker.new
+  maker.build(figures)
+  maker.export('output/test.kml')
 end

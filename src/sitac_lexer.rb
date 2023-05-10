@@ -2,33 +2,14 @@
 
 require_relative 'token'
 require_relative 'sem_ntk'
+require_relative 'log_utils'
 
-# Lexer module for Melissa Converter NG
-# @author PRV
-# @note This module contains the lexer and its subclasses
-# @version 1.0.0
-# @date 2023
-module SITACLexer
-  Log = Object.new
-
-  def Log.err(message = 'Error', tag = '')
-    printf "\e[31m[Log/E] #{tag} : #{message}\e[0m\n"
-  end
-
-  def Log.debug(message = 'Info', tag = '', after = "\n")
-    printf "\e[34m[Log/D] #{tag} : #{message}\e[0m#{after}"
-  end
-
-  def Log.info(message = 'Debug', tag = '', after = "\n")
-    printf "[Log/I] #{tag} : #{message}#{after}"
-  end
-end
 
 # XML lexer from given set of syntax
 # @author PRV
 # @note This lexer is auto-generated from a xml file, extracting its keywords
 class XMLLexer
-  include SITACLexer
+  include LogUtils
   def initialize(file, syntax = 'ntk')
     @rules = []
     @semset = syntax == 'ntk' ? NTKSemantics.new.regexes : nil
