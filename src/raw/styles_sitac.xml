@@ -1,0 +1,132 @@
+<!-- Begin_Styles -->
+
+<Style id="style_bulls">
+	<IconStyle>
+		<Icon>
+			<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+		</Icon>
+		<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+	</IconStyle>
+	<LabelStyle>
+	</LabelStyle>
+	<LineStyle>
+		<!--color>ff2f2fd3</color-->
+		<color>5f78ff00</color>
+		<width>7</width>
+	</LineStyle>
+	<PolyStyle>
+		<color>40ffffff</color>
+	</PolyStyle>
+	<BalloonStyle>
+		<displayMode>hide</displayMode>
+	</BalloonStyle>
+</Style>
+
+<Style id="style_bulls_thin">
+<IconStyle>
+	<Icon>
+		<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+	</Icon>
+	<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+</IconStyle>
+<LabelStyle>
+</LabelStyle>
+<LineStyle>
+	<!--color>ff2f2fd3</color-->
+	<color>5f78ff00</color>
+	<width>3</width>
+</LineStyle>
+<PolyStyle>
+	<color>40ffffff</color>
+</PolyStyle>
+<BalloonStyle>
+	<displayMode>hide</displayMode>
+</BalloonStyle>
+</Style>
+
+<Style id="style_line">
+<IconStyle>
+	<Icon>
+		<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+	</Icon>
+	<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+</IconStyle>
+<LabelStyle>
+</LabelStyle>
+<LineStyle>
+	<!--color>ff000000</color-->
+	<color>ff000000</color>
+	<width>8</width>
+</LineStyle>
+<PolyStyle>
+	<color>40ffffff</color>
+</PolyStyle>
+<BalloonStyle>
+	<displayMode>hide</displayMode>
+</BalloonStyle>
+</Style>
+
+<Style id="style_placemark">
+<IconStyle>
+	<Icon>
+		<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+	</Icon>
+	<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+</IconStyle>
+<LabelStyle>
+</LabelStyle>
+<LineStyle>
+	<color>ff2dc0fb</color>
+	<width>4</width>
+</LineStyle>
+<PolyStyle>
+	<color>40ffffff</color>
+</PolyStyle>
+<BalloonStyle>
+	<displayMode>hide</displayMode>
+</BalloonStyle>
+</Style>
+
+<Style id="style_circle">
+<IconStyle>
+	<Icon>
+		<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+	</Icon>
+	<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+</IconStyle>
+<LabelStyle>
+</LabelStyle>
+<LineStyle>
+	<color>ff9f3f30</color>
+	<width>8</width>
+</LineStyle>
+<PolyStyle>
+	<color>805053ef</color>
+</PolyStyle>
+<BalloonStyle>
+	<displayMode>hide</displayMode>
+</BalloonStyle>
+</Style>
+
+<Style id="style_shape">
+<IconStyle>
+	<Icon>
+		<href>https://earth.google.com/earth/rpc/cc/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+	</Icon>
+	<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+</IconStyle>
+<LabelStyle>
+</LabelStyle>
+<LineStyle>
+	<color>ff007cf5</color>
+	<width>4</width>
+</LineStyle>
+<PolyStyle>
+	<color>40ffffff</color>
+</PolyStyle>
+<BalloonStyle>
+	<displayMode>hide</displayMode>
+</BalloonStyle>
+</Style>
+
+				<!-- Begin_Objects -->
