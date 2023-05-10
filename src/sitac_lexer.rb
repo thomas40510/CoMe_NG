@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'strscan'
+
 require_relative 'token'
 require_relative 'sem_ntk'
 
@@ -9,109 +9,83 @@ require_relative 'sem_ntk'
 # @version 1.0.0
 # @date 2023
 module SITACLexer
-  # Generic Lexer, capable of accepting any set of custom rules
-  # @author JCLL
-  # @note This is a generic lexer, it can be used to tokenize any language
-  class GenericLexer
-    def initialize
-      @rules = []
-      @rules << [:newline, /\n+/]
-      @rules << [:space, /\s+/]
-    end
+  Log = Object.new
 
-    def open code
-      @strscan = StringScanner.new(code)
-      @code = code
-      @line = 0
-    end
-
-    def keyword kw
-      # regex to catch the keyword <keyword text...>
-      @rules << [kw.to_sym, /<#{kw}\s+>/]
-    end
-
-    def token tk
-      token = tk.keys.first
-      pattern = tk.values.first
-      @rules << [token, pattern]
-    end
-
-    def next_token
-      return nil if @strscan.eos?
-
-      @rules.each do |token, pattern|
-        return [token, @strscan.matched] if @strscan.scan(pattern)
-      end
-      raise 'Unrecognized token'
-    end
-
-# TODO: rewrite to tokenize based on tags, not on chars
-    def get_token
-      pos = position
-      @rules.each do |rule, regex|
-        value = @strscan.scan(regex)
-        return Token.new(rule, value, pos) if value
-      end
-      Token.new(:unknown, @strscan.getch, pos)
-    end
-
-    def position
-      if @strscan.pos.zero? || @strscan.pos == @old_pos
-        @line += 1
-        @old_pos = @strscan.pos
-      end
-      [@line, @strscan.pos - @old_pos + 1]
-    end
-
-    def tokenize(code)
-      puts '=== tokenizing ==='
-      open(code)
-      tokens = []
-      until @strscan.eos?
-        tokens << get_token
-        printf "Read #{tokens.length} lexems from #{code.length} bytes of code.\r"
-      end
-      puts "\n=== done tokenizing ==="
-      tokens
-    end
+  def Log.err(message = 'Error', tag = '')
+    printf "\e[31m[Log/E] #{tag} : #{message}\e[0m\n"
   end
 
-  # XML auto-generated lexer
-  # @author PRV
-  # @note This lexer is auto-generated from a xml file, extracting its keywords
-  class XMLLexer < GenericLexer
-    def initialize(file)
-      super()
-      puts '=== Creating Lexer ==='
-      xml = File.read(file)
-      # read xml and extract keywords (between < and >)
-      keys = []
-      xml.scan(%r{<([^/].*?)>}).each do |kw|
-        key = kw.first.split(' ').first
-        next if keys.include? key
-
-        keys << key
-        keyword key
-      end
-      token closing: %r{</.*?>}
-      token ochevron: /</
-      token cchevron: />/
-      token slash: %r{/}
-      token equal: /=/
-      token quote: /"/
-      token value: /[a-zA-Z0-9_]+/
-      printf "Created Lexer with #{keys.length} keywords.\n"
-      printf "=== done creating lexer ===\n"
-    end
+  def Log.debug(message = 'Info', tag = '', after = "\n")
+    printf "\e[34m[Log/D] #{tag} : #{message}\e[0m#{after}"
   end
 
-  # test on file
-  if __FILE__ == $PROGRAM_NAME
-    filename = 'input/test.xml'
-    lexer = XMLLexer.new(filename)
-    tokens = lexer.tokenize(File.read(filename))
-    puts tokens
-    # parser = NorthropParser.new(tokens)
-    # parser.parse_body
+  def Log.info(message = 'Debug', tag = '', after = "\n")
+    printf "[Log/I] #{tag} : #{message}#{after}"
   end
 end
+
+# XML lexer from given set of syntax
+# @author PRV
+# @note This lexer is auto-generated from a xml file, extracting its keywords
+class XMLLexer
+  include SITACLexer
+  def initialize(file, syntax = 'ntk')
+    @rules = []
+    @semset = syntax == 'ntk' ? NTKSemantics.new.regexes : nil
+    Log.info('Creating lexer', 'CoMe_Lexer')
+    @code = File.read(file)
+    @code = @code.to_s.gsub(/\s{2,}/, "\n")
+    gen_lexer
+    @tokens = []
+    Log.info('Lexer created', 'CoMe_Lexer')
+  end
+
+  def token tk
+    token = tk.keys.first
+    pattern = tk.values.first
+    @rules << [token, pattern]
+  end
+
+  def gen_lexer
+    # syntax file to tokens
+    @semset.each do |key, value|
+      token ":#{key}" => value
+    end
+  rescue StandardError
+    Log.err('Error while generating lexer', 'CoMe_Lexer')
+  end
+
+  def get_tokens
+    # get matches for rules
+    @rules.each do |rule, regex|
+      # for each match, create a token
+      Log.debug("Matching rule #{rule} with regex #{regex}", 'CoMe_Lexer', "\r")
+      val = []
+      # @code.scan(regex).each do |match|
+      #   val << match.first
+      # end
+      @tokens << Token.new(rule, @code.scan(regex), 0)
+
+      # val = @code.scan(regex)[-1].to_s.gsub('\\r\\n', '').gsub(/\s{2,}/, '')
+      # line = @code.lines.index(val)
+      # @tokens << Token.new(rule, val, line) if val
+      Log.info("Read #{@tokens.length} lexems from #{@code.length} bytes of code.", 'CoMe_Lexer', "\r")
+    end
+    @tokens
+  end
+
+  def tokenize
+    Log.info('Tokenizing', 'CoMe_Lexer')
+    get_tokens
+    Log.info("Tokenized #{@tokens.length} tokens", 'CoMe_Lexer')
+    @tokens
+  end
+end
+
+# test on file
+if __FILE__ == $PROGRAM_NAME
+  filename = 'input/test.xml'
+  lexer = XMLLexer.new(filename)
+  tokens = lexer.tokenize
+end
+

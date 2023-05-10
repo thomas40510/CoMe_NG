@@ -6,19 +6,17 @@ class NTKSemantics
 
   def initialize
     @regexes = {
-      beginTag: /<figures>/,
-      endTag: %r{</figures>},
-      beginFig: /<figure.*>/,
-      endFig: %r{</figure>},
+      body: %r{<figures>((.|\n)*)</figures>},
+      figure: %r{<figure .*?>((.|\n)*?)</figure>},
       figType: %r{<figureType>(.*)</figureType>},
       figName: %r{<name>(.*)</name>},
-      figPoints: %r{<points>(.*)</points>}m,
-      figPoint: %r{<point>(.*)</point>},
-      ptLatitude: %r{<latitude>(.*)</latitude>},
-      ptLongitude: %r{<longitude>(.*)</longitude>},
       figHoriz: %r{<horizontal>(.*)</horizontal>},
       figVert: %r{<vertical>(.*)</vertical>},
-      bullseye: %r{<bullseye>(.*)</bullseye>}m,
+      figPoints: %r{<points>((.|\n)*)</points>},
+      figPoint: %r{<point>((.|\n)*?)</point>},
+      ptLatitude: %r{<latitude>(.*)</latitude>},
+      ptLongitude: %r{<longitude>(.*)</longitude>},
+      bullseye: %r{<bullseye>(.*)</bullseye>},
       bullsRings: %r{<numberOfRings>(.*)</numberOfRings>},
       bullsDist: %r{<distanceBetweenRing>(.*)</distanceBetweenRing>}
     }
