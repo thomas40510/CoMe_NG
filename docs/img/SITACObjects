@@ -1,0 +1,51 @@
+classDiagram
+direction BT
+class Bullseye {
+    vradius
+    name
+    center
+    ring_distance
+    hradius
+    rings
+}
+class Circle
+class Corridor {
+    name
+    width
+    end_point
+    start_point
+}
+class Ellipse {
+    vradius
+    name
+    center
+    hradius
+}
+class Line {
+    name
+    points
+}
+class Object
+class Point {
+    name
+    longitude
+    latitude
+}
+class Polygon
+class Rectangle {
+    name
+    start
+    horizontal
+    vertical
+}
+class SITACObjects
+
+Object  -->  Bullseye 
+Ellipse  -->  Circle 
+Object  -->  Corridor 
+Object  -->  Ellipse 
+Object  -->  Line 
+SITACObjects  ..>  Object 
+Object  -->  Point 
+Line  -->  Polygon 
+Object  -->  Rectangle 

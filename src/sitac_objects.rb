@@ -127,6 +127,18 @@ class Ellipse
   end
 end
 
+# Represents a circle, given its center and radius
+class Circle < Ellipse
+  attr_reader :name, :center, :radius
+
+  # @param name [String] the name of the circle
+  # @param center [Point, Array] the center of the circle
+  # @param radius [Float] the radius of the circle
+  def initialize(name, center, radius)
+    super(name, center, radius, radius)
+  end
+end
+
 # Represents a corridor, given its starting point, its ending point and its width
 class Corridor
   attr_reader :name, :start_point, :end_point, :width
