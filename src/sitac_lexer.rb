@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'token'
-require_relative 'sem_ntk'
+require_relative 'semantics'
 require_relative 'log_utils'
 
 
