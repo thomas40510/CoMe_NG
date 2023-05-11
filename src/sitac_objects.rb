@@ -10,10 +10,12 @@
 
 # utility function
 module SITACObjects
+  # ensure a point is a Point object
+  # @param point [Point, Array] the point to convert
   def as_point(point)
-    if point.instance_of?(Point)
+    if point.instance_of?(Point) # already a Point object
       point
-    else
+    else # point is a list of coordinates
       Point.new('', point[0], point[1])
     end
   end

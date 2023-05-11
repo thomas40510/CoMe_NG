@@ -4,14 +4,16 @@ require_relative 'sitac_objects'
 require_relative 'log_utils'
 
 # Utilities for KML generation
-# @version 1.0.0
-# @date 2023
 module KMLUtils
   def meters_to_degrees(meters)
     meters / 111_111
   end
 
   # Create circle around a center
+  # @param center [Array] the center of the circle
+  # @param radius [Float] the radius of the circle
+  # @param nb_points [Integer] the number of points to create the circle
+  # @return [Array<Array>] the list of points of the circle
   def create_circle(center, radius, nb_points = 400)
     x, y = center
     points = []
@@ -22,6 +24,13 @@ module KMLUtils
     points
   end
 
+  # Create ellipse around a center, given horizontal and vertical radii
+  # @param center [Array] the center of the ellipse
+  # @param hradius [Float] the horizontal radius of the ellipse
+  # @param vradius [Float] the vertical radius of the ellipse
+  # @param angle [Float] the angle of the ellipse
+  # @param nb_points [Integer] the number of points to create the ellipse
+  # @return [Array<Array>] the list of points of the ellipse
   def create_ellipse(center, hradius, vradius, angle = 0, nb_points = 400)
     x, y = center
     points = []
@@ -35,6 +44,11 @@ module KMLUtils
     points
   end
 
+  # create a line apart from a center, given a length and an angle
+  # @param center [Array<float>] the center of the line
+  # @param length [Float] the length of the line
+  # @param angle [Float] the angle of the line
+  # @return [Array<Array>] the list of points of the line
   def create_line(center, length, angle = 0)
     points = []
     angle = angle * Math::PI / 180
@@ -56,10 +70,14 @@ class Visitor
     @content = ''
   end
 
+  # visit a point
+  # @param point [Point] the point to visit
   def visit_point(point)
     @content += "Point: #{point.name} (#{point.latitude}, #{point.longitude})\n"
   end
 
+  # visit a line
+  # @param line [Line] the line to visit
   def visit_line(line)
     @content += "Line: #{line.name}\n"
     line.points.each do |point|
@@ -68,6 +86,8 @@ class Visitor
     @content += "\n"
   end
 
+  # visit a polygon
+  # @param polygon [Polygon] the polygon to visit
   def visit_polygon(polygon)
     @content += "Polygon: #{polygon.name}\n"
     polygon.points.each do |point|
@@ -76,6 +96,8 @@ class Visitor
     @content += "\n"
   end
 
+  # visit a rectangle
+  # @param rectangle [Rectangle] the rectangle to visit
   def visit_rectangle(rectangle)
     @content += "Rectangle: #{rectangle.name}\n"
     visit_point rectangle.start
@@ -83,6 +105,8 @@ class Visitor
     @content += "Vertical: #{rectangle.vertical}\n\n"
   end
 
+  # visit a bullseye
+  # @param bullseye [Bullseye] the bullseye to visit
   def visit_bullseye(bullseye)
     @content += "Bullseye: #{bullseye.name}\n"
     visit_point bullseye.center
@@ -90,6 +114,8 @@ class Visitor
     @content += "Distance: #{bullseye.distance}\n\n"
   end
 
+  # visit an ellipse
+  # @param ellipse [Ellipse] the ellipse to visit
   def visit_ellipse(ellipse)
     @content += "Ellipse: #{ellipse.name}\n"
     visit_point ellipse.center
@@ -97,6 +123,8 @@ class Visitor
     @content += "Vertical: #{ellipse.vertical}\n\n"
   end
 
+  # visit a corridor
+  # @param corridor [Corridor] the corridor to visit
   def visit_corridor(corridor)
     @content += "Corridor: #{corridor.name}\n"
     visit_point corridor.start
@@ -106,6 +134,8 @@ class Visitor
 end
 
 # Convert SITAC objects into KML code
+# @autor PRV
+# @version 1.0.0
 class KMLMaker < Visitor
   include KMLUtils
 
@@ -116,6 +146,10 @@ class KMLMaker < Visitor
     @figures = []
   end
 
+  # build the kml file
+  # @param figures [Array<Figure>] the list of figures to convert
+  # @param name [String] the name of the kml file
+  # @return [String] the kml code
   def build(figures, name = "SITAC_#{Time.now.strftime('%Y%m%d_%H%M%S')}")
     @figures = figures
     @name = name
@@ -130,6 +164,9 @@ class KMLMaker < Visitor
              'CoMe_KMLMaker')
   end
 
+  # export the kml file
+  # @param filename [String] the name of the kml file
+  # @return [void]
   def export(filename)
     # create file
     file = "output/#{filename}"

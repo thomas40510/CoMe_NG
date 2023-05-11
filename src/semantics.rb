@@ -1,10 +1,33 @@
 # frozen_string_literal: true
 
-# Semantics for NTK Generated SITAC
-class NTKSemantics
+# Generic Semantics class
+class Semantics
   attr_reader :regexes, :sems
 
   def initialize
+    @regexes = {}
+    @sems = {}
+  end
+
+  def sems_and_regexes
+    [@sems, @regexes]
+  end
+end
+
+# Semantics for Melissa Generated SITAC
+# TODO: implement
+class MelissaSemantics < Semantics
+  def initialize
+    super
+    @regexes = nil
+    @sems = nil
+  end
+end
+
+# Semantics for NTK Generated SITAC
+class NTKSemantics < Semantics
+  def initialize
+    super
     @regexes = {
       body: %r{<figures>((.|\n)*)</figures>},
       figure: %r{<figure .*?>((.|\n)*?)</figure>},
@@ -24,9 +47,5 @@ class NTKSemantics
     @regexes.each do |key, value|
       @sems[key] = value.to_s.scan(/<(.*)>/).first.first.to_sym
     end
-  end
-
-  def sems_and_regexes
-    [@sems, @regexes]
   end
 end

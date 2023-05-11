@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require_relative 'sitac_lexer'
-require_relative 'sem_ntk'
+require_relative 'semantics'
 require_relative 'sitac_objects'
 require_relative 'log_utils'
 
-# Parser for Melissa Converter NG
-# @note This module contains the parser and its subclasses
+# Parser utility for Melissa Converter NG
 # @author PRV
 # @version 1.0.0
 # @date 2023
@@ -18,20 +17,33 @@ module SITACParser
   end
 end
 
+# Generic Parser class
+# @author PRV
+# @version 1.0.0
+class Parser
+  include SITACParser
+  attr_reader :figures, :tokens, :name
+
+  def initialize(tokens, semantics = 'ntk')
+    @tokens = tokens
+    @name = @tokens.find { |token| token.type == ':figName' }.value.first.first
+    @figures = []
+    semclass = semantics == 'ntk' ? NTKSemantics.new : MelissaSemantics.new
+    @sems, @regexes = semclass.sems_and_regexes
+  end
+end
+
 # Parser for SITAC files
 # @note This class is used to parse a SITAC file and identify its objects
 # @author PRV
-# @version 1.0.0
+# @version 1.0.1
 # @date 2023
-class NorthropParser
+class NorthropParser < Parser
   include SITACParser
   attr_reader :figures, :tokens, :name
 
   def initialize(tokens)
-    @tokens = tokens
-    @name = @tokens.find { |token| token.type == ':figName' }.value.first.first
-    @figures = []
-    @sems, @regexes = NTKSemantics.new.sems_and_regexes
+    super(tokens, 'ntk')
   end
 
   def parse_figures
