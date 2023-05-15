@@ -19,7 +19,7 @@ class CoMe_UI
   def initialize
     @filename = ''
     @outfile = ''
-    @logtext = {:out => ''}
+    $logtext = { out: '' }
 
     window('CoMe', 300, 200) {
       vertical_box {
@@ -29,6 +29,8 @@ class CoMe_UI
           button('Open') {
             on_clicked do
               @filename = open_file
+              next unless @filename
+
               # update label
               @label.text = "opened file: #{@filename}"
             end
@@ -68,6 +70,7 @@ class CoMe_UI
           @openbtn.enabled = false
         }
         # text area
+        # multiline 'console-like' text area displaying printf colors
         @logs = non_wrapping_multiline_entry {
           read_only true
           text 'Logs will appear here'
@@ -77,7 +80,7 @@ class CoMe_UI
 
       DataBinding::Observer.proc do |value|
         @logs.text = value
-      end.observe(@logtext, :out)
+      end.observe($logtext, :out)
 
       puts 'CoMe UI initialized'
     }.show
@@ -89,12 +92,15 @@ class CoMe_UI
     # stream stdout to @logtext
     $stdout = StringIO.new
       $stdout.sync = true
-    Thread.new do
-      loop do
-        @logtext[:out] = $stdout.string
-        sleep 1
+    # data stream to @logtext on every write
+    $stdout.extend(Module.new {
+      def write(str)
+        # write on top of @logtext
+        # delete color codes
+        str = str.gsub(/\e\[(\d+)m/, '')
+        $logtext[:out] = str + $logtext[:out]
       end
-    end
+    })
   end
 end
 
