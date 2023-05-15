@@ -19,6 +19,7 @@ class CoMe_UI
   def initialize
     @filename = ''
     @outfile = ''
+    @logtext = {:out => ''}
 
     window('CoMe', 300, 200) {
       vertical_box {
@@ -34,6 +35,8 @@ class CoMe_UI
           }
           button('Generate KML') {
             on_clicked do
+              next unless @filename
+
               lexer = XMLLexer.new(@filename, 'ntk')
               tokens = lexer.tokenize
 
@@ -44,6 +47,8 @@ class CoMe_UI
               kml.build(parser.figures)
               # ask for output file
               output = save_file
+              next unless output
+
               output += '.kml' unless output.include?('.kml')
               # write kml to file
               kml.export(output)
@@ -62,8 +67,34 @@ class CoMe_UI
           }
           @openbtn.enabled = false
         }
+        # text area
+        @logs = non_wrapping_multiline_entry {
+          read_only true
+          text 'Logs will appear here'
+        }
       }
+      get_stdout
+
+      DataBinding::Observer.proc do |value|
+        @logs.text = value
+      end.observe(@logtext, :out)
+
+      puts 'CoMe UI initialized'
     }.show
+  ensure
+    $stdout = STDOUT
+  end
+
+  def get_stdout
+    # stream stdout to @logtext
+    $stdout = StringIO.new
+      $stdout.sync = true
+    Thread.new do
+      loop do
+        @logtext[:out] = $stdout.string
+        sleep 1
+      end
+    end
   end
 end
 
