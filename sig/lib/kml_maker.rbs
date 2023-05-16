@@ -1,0 +1,108 @@
+# Utilities for KML generation
+module KMLUtils
+  def meters_to_degrees: (Float meters) -> Float
+
+  # Create circle around a center
+  # @param center [Array] the center of the circle
+  # @param radius [Float] the radius of the circle
+  # @param nb_points [Integer] the number of points to create the circle
+  # @return [Array<Array>] the list of points of the circle
+  def create_circle: (Array[Float] center, Float radius, ?::Integer nb_points) -> Array[Array[Float]]
+
+  # Create ellipse around a center, given horizontal and vertical radii
+  # @param center [Array] the center of the ellipse
+  # @param hradius [Float] the horizontal radius of the ellipse
+  # @param vradius [Float] the vertical radius of the ellipse
+  # @param angle [Float] the angle of the ellipse
+  # @param nb_points [Integer] the number of points to create the ellipse
+  # @return [Array<Array>] the list of points of the ellipse
+  def create_ellipse: (Array[Float] center, Float hradius, Float vradius, ?::Integer angle, ?::Integer nb_points) -> Array[Array[Float]]
+
+  # create a line apart from a center, given a length and an angle
+  # @param center [Array<float>] the center of the line
+  # @param length [Float] the length of the line
+  # @param angle [Float] the angle of the line
+  # @return [Array<Array>] the list of points of the line
+  def create_line: (Array[Float] center, Float length, ?::Integer angle) -> Array[Array[Float]]
+end
+
+# Generic Visitor class for Melissa Converter NG
+# @note This class is generic and not used as is
+# @author PRV
+# @version 1.0.0
+# @date 2023
+class Visitor
+  include LogUtils
+
+  def initialize: () -> void
+
+  # visit a point
+  # @param point [Point] the point to visit
+  def visit_point: (Point point) -> void
+
+  # visit a line
+  # @param line [Line] the line to visit
+  def visit_line: (Line line) -> void
+
+  # visit a polygon
+  # @param polygon [Polygon] the polygon to visit
+  def visit_polygon: (Polygon polygon) -> void
+
+  # visit a rectangle
+  # @param rectangle [Rectangle] the rectangle to visit
+  def visit_rectangle: (Rectangle rectangle) -> void
+
+  # visit a bullseye
+  # @param bullseye [Bullseye] the bullseye to visit
+  def visit_bullseye: (Bullseye bullseye) -> void
+
+  # visit an ellipse
+  # @param ellipse [Ellipse] the ellipse to visit
+  def visit_ellipse: (Ellipse ellipse) -> void
+
+  # visit a corridor
+  # @param corridor [Corridor] the corridor to visit
+  def visit_corridor: (Corridor corridor) -> void
+end
+
+# Convert SITAC objects into KML code
+# @autor PRV
+# @version 1.0.0
+class KMLMaker < Visitor
+  include KMLUtils
+
+  attr_reader content: Array[untyped]
+
+  attr_reader name: String
+
+  def initialize: () -> void
+
+  # build the kml file
+  # @param figures [Array<Figure>] the list of figures to convert
+  # @param name [String] the name of the kml file
+  # @return [String] the kml code
+  def build: (Array[untyped] figures, ?::String name) -> void
+
+  # export the kml file
+  # @param filename [String] the name of the kml file
+  # @return [void]
+  def export: (String filename) -> void
+
+  def header: () -> void
+
+  def footer: () -> void
+
+  def visit_point: (Point point) -> void
+
+  def visit_line: (Line line) -> void
+
+  def visit_polygon: (Polygon polygon) -> void
+
+  def visit_rectangle: (Rectangle rectangle) -> void
+
+  def visit_bullseye: (Bullseye bullseye) -> void
+
+  def visit_ellipse: (Ellipse ellipse) -> void
+
+  def visit_corridor: (Corridor corridor) -> nil
+end

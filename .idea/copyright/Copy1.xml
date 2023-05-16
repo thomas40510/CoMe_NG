@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;&amp;#36;today.year&quot;)&amp;#36;today.year PRV / EIE Casa. This code is free to re-use as long as the original author is credited" />
+    <option name="myName" value="Copy1" />
+  </copyright>
+</component>

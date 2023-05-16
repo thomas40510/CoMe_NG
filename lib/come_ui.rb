@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Copyright (c) 2023 PRV / EIE Casa. This code is free to re-use as long as the original author is credited
+
 # @see https://github.com/kojix2/libui
 # @see https://github.com/AndyObtiva/glimmer-dsl-libui
 
@@ -13,7 +15,7 @@ require_relative 'ast'
 require_relative 'log_utils'
 
 # GUI for CoMe_NG
-# @version 1.2.0
+# @version 1.2.3
 # @author PRV
 # @date 2023
 class CoMe_UI
@@ -23,7 +25,7 @@ class CoMe_UI
 
   # Constants
   BG_COLOR = :ghost_white
-  COLORDEFS = {
+  COLORS = {
     red: "\e[31m",
     green: "\e[32m",
     blue: "\e[34m"
@@ -89,14 +91,14 @@ class CoMe_UI
 
               # make kml
               kml = KMLMaker.new
-              kml.build(parser.figures)
+              kml.build(parser.figures, parser.name)
               # ask for output file
-              output = save_file # TODO: ask for dir instead, and save with generated filename
+              output = open_folder
               next unless output
 
-              output += '.kml' unless output.include?('.kml')
+              # output += '.kml' unless output.include?('.kml')
               # write kml to file
-              kml.export(output)
+              output = kml.export(output)
               @outfile = output
 
               # update label
@@ -158,7 +160,7 @@ class CoMe_UI
     $stdout.extend(Module.new do
       def write(str)
         # get color key from color codes
-        color = COLORDEFS.key(str.match(/\e\[(\d+)m/).to_s)
+        color = COLORS.key(str.match(/\e\[(\d+)m/).to_s)
         # delete color codes
         str = str.gsub(/\e\[(\d+)m/, '')
 
