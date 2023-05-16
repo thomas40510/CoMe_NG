@@ -8,7 +8,7 @@ class CoMe_UI
   # Constants
   BG_COLOR: Symbol
 
-  COLORDEFS: Hash[Symbol, String]
+  COLORS: Hash[Symbol, String]
 
   # Datastructure for log entries
   LogEntry: class

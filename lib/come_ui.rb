@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Copyright (c) 2023 PRV / EIE Casa. This code is free to re-use as long as the original author is credited
+
 # @see https://github.com/kojix2/libui
 # @see https://github.com/AndyObtiva/glimmer-dsl-libui
 
@@ -23,7 +25,7 @@ class CoMe_UI
 
   # Constants
   BG_COLOR = :ghost_white
-  COLORDEFS = {
+  COLORS = {
     red: "\e[31m",
     green: "\e[32m",
     blue: "\e[34m"
@@ -158,7 +160,7 @@ class CoMe_UI
     $stdout.extend(Module.new do
       def write(str)
         # get color key from color codes
-        color = COLORDEFS.key(str.match(/\e\[(\d+)m/).to_s)
+        color = COLORS.key(str.match(/\e\[(\d+)m/).to_s)
         # delete color codes
         str = str.gsub(/\e\[(\d+)m/, '')
 
