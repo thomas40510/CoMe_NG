@@ -10,6 +10,9 @@ require_relative 'log_utils'
 # @note This lexer is auto-generated from a xml file, extracting its keywords
 class XMLLexer
   include LogUtils
+  # Initialize the lexer
+  # @param file [String] the file to read the SITAC from
+  # @param syntax [String] the syntax to use (ntk/melissa)
   def initialize(file, syntax = 'ntk')
     @rules = []
     @semset = syntax == 'ntk' ? NTKSemantics.new.regexes : nil
@@ -21,12 +24,15 @@ class XMLLexer
     Log.info('Lexer created', 'CoMe_Lexer')
   end
 
+  # add a token to the rules
+  # @param tk [Token] the token to add
   def token tk
     token = tk.keys.first
     pattern = tk.values.first
     @rules << [token, pattern]
   end
 
+  # Generate the lexer from the syntax file
   def gen_lexer
     # syntax file to tokens
     @semset.each do |key, value|
@@ -36,6 +42,7 @@ class XMLLexer
     Log.err('Error while generating lexer', 'CoMe_Lexer')
   end
 
+  # Get the tokens from the code
   def get_tokens
     # get matches for rules
     @rules.each do |rule, regex|
@@ -47,6 +54,7 @@ class XMLLexer
     @tokens
   end
 
+  # Tokenize the code
   def tokenize
     Log.info('Tokenizing', 'CoMe_Lexer')
     get_tokens
