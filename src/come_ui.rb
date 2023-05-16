@@ -25,7 +25,7 @@ class CoMe_UI
   def initialize
     @filename = ''
     @outfile = ''
-    @logs = [Val.new('Logs will appear here...')]
+    @logs = [Val.new(['Logs will appear here...', :gray])]
   end
 
   def launch
@@ -83,14 +83,10 @@ class CoMe_UI
         #   text 'Logs will appear here'
         # }
         table {
-          text_column('Logs')
+          #text_column('Logs')
+          text_color_column("Logs")
           editable false
           cell_rows <=> [self, :logs]
-
-          on_changed do
-            # scroll to bottom
-            @logs.last
-          end
         }
       }
       get_stdout
@@ -100,6 +96,8 @@ class CoMe_UI
       # end.observe($logtext, :out)
 
       DataBinding::Observer.proc do |value|
+        next if value.last.nil?
+
         @logs.unshift(value.last)
       end.observe($logtext)
 
@@ -121,7 +119,7 @@ class CoMe_UI
         str = str.gsub(/\e\[(\d+)m/, '')
         # convert to Glimmer string
         # on top of @logtext[:out]
-        $logtext << Val.new(str)
+        $logtext << Val.new([str, :blue])
       end
     })
   end
