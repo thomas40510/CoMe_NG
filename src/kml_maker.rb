@@ -139,7 +139,7 @@ end
 class KMLMaker < Visitor
   include KMLUtils
 
-  attr_reader :content
+  attr_reader :content, :name
 
   def initialize
     super
@@ -169,7 +169,7 @@ class KMLMaker < Visitor
   # @return [void]
   def export(filename)
     # create file
-    file = "output/#{filename}"
+    file = filename.to_s
     kml_file = File.open(file, 'w')
     kml_file.write(@content)
     kml_file.close

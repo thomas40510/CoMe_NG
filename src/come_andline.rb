@@ -48,7 +48,6 @@ rescue StandardError => e
   exit
 end
 
-# create lexer
 lexer = XMLLexer.new(ARGV[0], 'ntk')
 tokens = lexer.tokenize
 
