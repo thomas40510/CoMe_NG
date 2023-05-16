@@ -12,10 +12,16 @@ require_relative 'kml_maker'
 require_relative 'ast'
 require_relative 'log_utils'
 
-
+# GUI for CoMe_NG
+# @version 1.2.0
+# @author PRV
+# @date 2023
 class CoMe_UI
+  include Glimmer
+
   @@logtext = []
 
+  # Constants
   BG_COLOR = :ghost_white
   COLORDEFS = {
     red: "\e[31m",
@@ -23,12 +29,13 @@ class CoMe_UI
     blue: "\e[34m"
   }.freeze
 
+  # Datastructure for log entries
   LogEntry = Struct.new(:logs, :background_color)
 
-  include Glimmer
 
   attr_accessor :logs
 
+  # Initialize vars and launch the UI
   def initialize
     @filename = ''
     @outfile = ''
@@ -39,8 +46,21 @@ class CoMe_UI
     launch
   end
 
+  # Create a UI window and display it
   def launch
-    @window = window('CoMe', 720, 480) do
+    @window = create_window
+    @window.show
+  ensure
+    # redirect $stdout to original stream upon closing
+    $stdout = STDOUT
+  end
+
+  # Create the UI window with its elements and logic.
+  # @note It follows the Glimmer DSL syntax.
+  # @see https://github.com/AndyObtiva/glimmer-dsl-libui
+  # @return [UI::Window] the UI window
+  def create_window
+    window('CoMe', 720, 480) do
       margined true
 
       vertical_box do
@@ -59,13 +79,15 @@ class CoMe_UI
             on_clicked do
               next unless @filename
 
-              # execute CoMe
+              # lexer
               lexer = XMLLexer.new(@filename, 'ntk')
               tokens = lexer.tokenize
 
+              # parser
               parser = NorthropParser.new(tokens)
               parser.parse_figures
 
+              # make kml
               kml = KMLMaker.new
               kml.build(parser.figures)
               # ask for output file
@@ -112,6 +134,7 @@ class CoMe_UI
           cell_rows <=> [self, :logs]
         end
       end
+
       get_stdout
 
       # observe @@logtext for changes
@@ -123,13 +146,10 @@ class CoMe_UI
 
       puts 'CoMe UI initialized'
     end
-    @window.show
-  ensure
-    $stdout = STDOUT
+
   end
 
   # Redirect $stdout and write to @@logtext
-  # @return [void]
   def get_stdout
     $stdout = StringIO.new
     $stdout.sync = true
