@@ -14,14 +14,22 @@ require_relative 'log_utils'
 
 
 class CoMe_UI
+  $logtext = []
+
+  Val = Struct.new(:logs)
+
   include Glimmer
+
+  attr_accessor :logs
 
   def initialize
     @filename = ''
     @outfile = ''
-    $logtext = { out: '' }
+    @logs = [Val.new('Logs will appear here...')]
+  end
 
-    window('CoMe', 300, 200) {
+  def launch
+    window('CoMe', 720, 480) {
       vertical_box {
         # named label
         @label = label('No file opened yet')
@@ -70,17 +78,30 @@ class CoMe_UI
           @openbtn.enabled = false
         }
         # text area
-        # multiline 'console-like' text area displaying printf colors
-        @logs = non_wrapping_multiline_entry {
-          read_only true
-          text 'Logs will appear here'
+        # @logs = non_wrapping_multiline_entry {
+        #   read_only true
+        #   text 'Logs will appear here'
+        # }
+        table {
+          text_column('Logs')
+          editable false
+          cell_rows <=> [self, :logs]
+
+          on_changed do
+            # scroll to bottom
+            @logs.last
+          end
         }
       }
       get_stdout
 
+      # DataBinding::Observer.proc do |value|
+      #   @logs <=> value
+      # end.observe($logtext, :out)
+
       DataBinding::Observer.proc do |value|
-        @logs.text = value
-      end.observe($logtext, :out)
+        @logs.unshift(value.last)
+      end.observe($logtext)
 
       puts 'CoMe UI initialized'
     }.show
@@ -91,17 +112,19 @@ class CoMe_UI
   def get_stdout
     # stream stdout to @logtext
     $stdout = StringIO.new
-      $stdout.sync = true
+    $stdout.sync = true
     # data stream to @logtext on every write
     $stdout.extend(Module.new {
       def write(str)
         # write on top of @logtext
         # delete color codes
         str = str.gsub(/\e\[(\d+)m/, '')
-        $logtext[:out] = str + $logtext[:out]
+        # convert to Glimmer string
+        # on top of @logtext[:out]
+        $logtext << Val.new(str)
       end
     })
   end
 end
 
-CoMe_UI.new
+CoMe_UI.new.launch

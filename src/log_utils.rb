@@ -13,7 +13,7 @@ module LogUtils
   # @param tag [String] the tag to display
   # @return [void]
   def Log.err(message = 'Error', tag = '')
-    printf "\e[31m[Log/E] #{tag} : #{message}\e[0m\n"
+    printf "\e[31m[Log/E] #{tag} : ⚠️ #{message}\e[0m\n"
   end
 
   # Log a debug message
@@ -40,7 +40,7 @@ module LogUtils
   # @param after [String] the string to append after the message
   # @return [void]
   def Log.succ(message = 'Success', tag = '', after = "\n")
-    printf "\e[32m[Log/S] #{tag} : #{message}\e[0m#{after}"
+    printf "\e[32m[Log/S] #{tag} : ✅ #{message}\e[0m#{after}"
   end
 end
 
