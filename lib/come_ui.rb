@@ -91,14 +91,14 @@ class CoMe_UI
 
               # make kml
               kml = KMLMaker.new
-              kml.build(parser.figures)
+              kml.build(parser.figures, parser.name)
               # ask for output file
-              output = save_file # TODO: ask for dir instead, and save with generated filename
+              output = open_folder
               next unless output
 
-              output += '.kml' unless output.include?('.kml')
+              # output += '.kml' unless output.include?('.kml')
               # write kml to file
-              kml.export(output)
+              output = kml.export(output)
               @outfile = output
 
               # update label

@@ -165,20 +165,22 @@ class KMLMaker < Visitor
   end
 
   # export the kml file
-  # @param filename [String] the name of the kml file
+  # @param dirname [String] the name of the kml file
   # @return [void]
-  def export(filename)
+  def export(dirname)
     # create file
-    file = filename.to_s
+    time = Time.now.strftime('%Y%m%d%H%M%S')
+    file = "#{dirname}/#{@name}_#{time}.kml"
     kml_file = File.open(file, 'w')
     kml_file.write(@content)
     kml_file.close
     Log.info("Successfully exported KML file #{file}!", 'CoMe_KMLMaker')
 
+    file
   rescue StandardError => e
     if e.message.include?('No such file or directory')
       # create dir
-      dir = File.dirname(filename)
+      dir = File.dirname(file)
       Dir.mkdir(dir) unless File.exist?(dir)
       retry
     end
