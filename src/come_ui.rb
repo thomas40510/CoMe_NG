@@ -36,6 +36,8 @@ class CoMe_UI
     @logs = [Val.new(['⬆️ Logs will appear above ⬆️', :black], $bg_color)]
     @logs << Val.new(['=======================', :black], $bg_color)
     @logs = @logs.reverse
+
+    launch
   end
 
   def launch
@@ -52,7 +54,7 @@ class CoMe_UI
               next unless @filename
 
               # update label
-              @label.text = "opened file: #{@filename}"
+              @label.text = "📖 Opened file: #{@filename}"
             end
           }
           button('Generate KML') {
@@ -77,13 +79,12 @@ class CoMe_UI
               @outfile = output
 
               # update label
-              @label.text = "generated file: #{output}"
+              @label.text = "✅ Generated file: #{output}"
               @openbtn.enabled = true
             end
           }
           @openbtn = button('Show in Finder') {
             on_clicked do
-              puts "open -R #{@outfile}"
               system("open -R #{@outfile}")
             end
           }
@@ -114,8 +115,8 @@ class CoMe_UI
         @logs.unshift(value.last)
       end.observe($logtext)
 
-
       puts 'CoMe UI initialized'
+      focused
     }.show
   ensure
     $stdout = STDOUT
@@ -141,4 +142,4 @@ class CoMe_UI
   end
 end
 
-CoMe_UI.new.launch
+CoMe_UI.new
