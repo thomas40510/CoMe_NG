@@ -14,17 +14,16 @@ require_relative 'log_utils'
 
 
 class CoMe_UI
-  $logtext = []
-  $bg_color = :ghost_white
+  @@logtext = []
 
-  @@colordefs = {
+  BG_COLOR = :ghost_white
+  COLORDEFS = {
     red: "\e[31m",
     green: "\e[32m",
     blue: "\e[34m"
-  }
+  }.freeze
 
-
-  Val = Struct.new(:logs, :background_color)
+  LogEntry = Struct.new(:logs, :background_color)
 
   include Glimmer
 
@@ -33,22 +32,21 @@ class CoMe_UI
   def initialize
     @filename = ''
     @outfile = ''
-    @logs = [Val.new(['⬆️ Logs will appear above ⬆️', :black], $bg_color)]
-    @logs << Val.new(['=======================', :black], $bg_color)
+    @logs = [LogEntry.new(['⬆️ Logs will appear above ⬆️', :black], BG_COLOR)]
+    @logs << LogEntry.new(['=======================', :black], BG_COLOR)
     @logs = @logs.reverse
 
     launch
   end
 
   def launch
-    @window = window('CoMe', 720, 480) {
+    @window = window('CoMe', 720, 480) do
       margined true
 
-      vertical_box {
-        # named label
+      vertical_box do
         @label = label('No file opened yet')
-        horizontal_box {
-          button('Open') {
+        horizontal_box do
+          button('Open') do
             on_clicked do
               @filename = open_file
               next unless @filename
@@ -56,11 +54,12 @@ class CoMe_UI
               # update label
               @label.text = "📖 Opened file: #{@filename}"
             end
-          }
-          button('Generate KML') {
+          end
+          button('Generate KML') do
             on_clicked do
               next unless @filename
 
+              # execute CoMe
               lexer = XMLLexer.new(@filename, 'ntk')
               tokens = lexer.tokenize
 
@@ -70,7 +69,7 @@ class CoMe_UI
               kml = KMLMaker.new
               kml.build(parser.figures)
               # ask for output file
-              output = save_file
+              output = save_file # TODO: ask for dir instead, and save with generated filename
               next unless output
 
               output += '.kml' unless output.include?('.kml')
@@ -82,63 +81,71 @@ class CoMe_UI
               @label.text = "✅ Generated file: #{output}"
               @openbtn.enabled = true
             end
-          }
-          @openbtn = button('Show in Finder') {
+          end
+          @openbtn = button('Show in Finder') do
+            next unless @outfile
+
+            # get system type (Darwin, Linux, Windows)
+            sysname = RbConfig::CONFIG['host_os']
+
             on_clicked do
-              system("open -R #{@outfile}")
+              case sysname
+              when /darwin/
+                system("open -R #{@outfile}") # open file in finder
+              when /linux/
+                system("xdg-open #{@outfile}") # open file in file manager
+              when /mswin|mingw|cygwin/
+                system("explorer #{@outfile}") # open file in explorer
+              else
+                Log.err('Unsupported OS', 'CoMe')
+              end
             end
-          }
+          end
           @openbtn.enabled = false
-        }
-        # text area
-        # @logs = non_wrapping_multiline_entry {
-        #   read_only true
-        #   text 'Logs will appear here'
-        # }
-        table {
-          # text_column('Logs')
+        end
+        # display $stdout in a pretty colored table
+        table do
           background_color_column
           text_color_column("Logs")
           editable false
+          # bind to @logs
           cell_rows <=> [self, :logs]
-        }
-      }
+        end
+      end
       get_stdout
 
-      # DataBinding::Observer.proc do |value|
-      #   @logs <=> value
-      # end.observe($logtext, :out)
-
+      # observe @@logtext for changes
       DataBinding::Observer.proc do |value|
         next if value.last.nil?
 
         @logs.unshift(value.last)
-      end.observe($logtext)
+      end.observe(@@logtext)
 
       puts 'CoMe UI initialized'
-      focused
-    }.show
+    end
+    @window.show
   ensure
     $stdout = STDOUT
   end
 
+  # Redirect $stdout and write to @@logtext
+  # @return [void]
   def get_stdout
-    # stream stdout to @logtext
     $stdout = StringIO.new
     $stdout.sync = true
+
     # data stream to @logtext on every write
-    $stdout.extend(Module.new {
+    $stdout.extend(Module.new do
       def write(str)
         # get color key from color codes
-        colorcode = str.match(/\e\[(\d+)m/).to_s
-        color = @@colordefs.key(colorcode)
+        color = COLORDEFS.key(str.match(/\e\[(\d+)m/).to_s)
         # delete color codes
         str = str.gsub(/\e\[(\d+)m/, '')
-        # convert to Glimmer string
-        # on top of @logtext[:out]
-        $logtext << Val.new([str, color], $bg_color)
+
+        # add to @@logtext
+        @@logtext << LogEntry.new([str, color], BG_COLOR)
       end
-    })
+    end)
   end
 end
 
