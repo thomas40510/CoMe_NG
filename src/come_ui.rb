@@ -15,8 +15,16 @@ require_relative 'log_utils'
 
 class CoMe_UI
   $logtext = []
+  $bg_color = :ghost_white
 
-  Val = Struct.new(:logs)
+  @@colordefs = {
+    red: "\e[31m",
+    green: "\e[32m",
+    blue: "\e[34m"
+  }
+
+
+  Val = Struct.new(:logs, :background_color)
 
   include Glimmer
 
@@ -25,11 +33,15 @@ class CoMe_UI
   def initialize
     @filename = ''
     @outfile = ''
-    @logs = [Val.new(['Logs will appear here...', :gray])]
+    @logs = [Val.new(['⬆️ Logs will appear above ⬆️', :black], $bg_color)]
+    @logs << Val.new(['=======================', :black], $bg_color)
+    @logs = @logs.reverse
   end
 
   def launch
-    window('CoMe', 720, 480) {
+    @window = window('CoMe', 720, 480) {
+      margined true
+
       vertical_box {
         # named label
         @label = label('No file opened yet')
@@ -83,7 +95,8 @@ class CoMe_UI
         #   text 'Logs will appear here'
         # }
         table {
-          #text_column('Logs')
+          # text_column('Logs')
+          background_color_column
           text_color_column("Logs")
           editable false
           cell_rows <=> [self, :logs]
@@ -101,6 +114,7 @@ class CoMe_UI
         @logs.unshift(value.last)
       end.observe($logtext)
 
+
       puts 'CoMe UI initialized'
     }.show
   ensure
@@ -114,12 +128,14 @@ class CoMe_UI
     # data stream to @logtext on every write
     $stdout.extend(Module.new {
       def write(str)
-        # write on top of @logtext
+        # get color key from color codes
+        colorcode = str.match(/\e\[(\d+)m/).to_s
+        color = @@colordefs.key(colorcode)
         # delete color codes
         str = str.gsub(/\e\[(\d+)m/, '')
         # convert to Glimmer string
         # on top of @logtext[:out]
-        $logtext << Val.new([str, :blue])
+        $logtext << Val.new([str, color], $bg_color)
       end
     })
   end
