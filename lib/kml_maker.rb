@@ -244,16 +244,16 @@ class KMLMaker < Visitor
   end
 
   def visit_rectangle(rectangle)
-    startpt = rectangle.start
-    rectpoints = []
-    rectpoints << startpt
-    rectpoints << Point.new('', startpt.latitude + meters_to_degrees(rectangle.vertical), startpt.longitude)
-    rectpoints << Point.new('', startpt.latitude + meters_to_degrees(rectangle.vertical),
-                            startpt.longitude + meters_to_degrees(rectangle.horizontal))
-    rectpoints << Point.new('', startpt.latitude, startpt.longitude + meters_to_degrees(rectangle.horizontal))
-    rectpoints << startpt
+    start_point = rectangle.start
+    rect_points = []
+    rect_points << start_point
+    rect_points << Point.new('', start_point.latitude + meters_to_degrees(rectangle.vertical), start_point.longitude)
+    rect_points << Point.new('', start_point.latitude + meters_to_degrees(rectangle.vertical),
+                             start_point.longitude + meters_to_degrees(rectangle.horizontal))
+    rect_points << Point.new('', start_point.latitude, start_point.longitude + meters_to_degrees(rectangle.horizontal))
+    rect_points << start_point
 
-    visit_polygon(Polygon.new(rectangle.name, rectpoints))
+    visit_polygon(Polygon.new(rectangle.name, rect_points))
   end
 
   def visit_bullseye(bullseye)
@@ -262,18 +262,18 @@ class KMLMaker < Visitor
     points_thick = []
     points_thin = []
 
-    nbrings = bullseye.rings
+    nb_rings = bullseye.rings
     distance = meters_to_degrees(bullseye.ring_distance) / 2
     radius = meters_to_degrees(bullseye.vradius)
-    smallest_radius = radius - (nbrings * distance)
+    smallest_radius = radius - (nb_rings * distance)
     center_coords = [bullseye.center.latitude, bullseye.center.longitude]
     # thick lines (main rings, every 2 rings)
-    (0..nbrings).step(2) do |i|
+    (0..nb_rings).step(2) do |i|
       rad = smallest_radius + i * distance
       points_thick << create_circle(center_coords, rad)
     end
     # thin lines (every other ring)
-    (1..nbrings).step(2) do |i|
+    (1..nb_rings).step(2) do |i|
       rad = smallest_radius + i * distance
       points_thin << create_circle(center_coords, rad)
     end
@@ -322,10 +322,10 @@ class KMLMaker < Visitor
   end
 
   def visit_ellipse(ellipse)
-    hradius = meters_to_degrees(ellipse.hradius)
-    vradius = meters_to_degrees(ellipse.vradius)
+    h_radius = meters_to_degrees(ellipse.hradius)
+    v_radius = meters_to_degrees(ellipse.vradius)
     center = [ellipse.center.latitude, ellipse.center.longitude]
-    points = create_ellipse(center, hradius, vradius)
+    points = create_ellipse(center, h_radius, v_radius)
 
     kml_ellipse = "<Placemark>
                     <name>#{ellipse.name}</name>

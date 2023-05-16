@@ -40,15 +40,8 @@ class XMLLexer
     # get matches for rules
     @rules.each do |rule, regex|
       # for each match, create a token
-      val = []
-      # @code.scan(regex).each do |match|
-      #   val << match.first
-      # end
       @tokens << Token.new(rule, @code.scan(regex), 0)
 
-      # val = @code.scan(regex)[-1].to_s.gsub('\\r\\n', '').gsub(/\s{2,}/, '')
-      # line = @code.lines.index(val)
-      # @tokens << Token.new(rule, val, line) if val
       Log.info("Read #{@tokens.length} lexems from #{@code.length} bytes of code.", 'CoMe_Lexer', "\r")
     end
     @tokens
