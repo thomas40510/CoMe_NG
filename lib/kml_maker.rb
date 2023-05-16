@@ -190,7 +190,7 @@ class KMLMaker < Visitor
                 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
                 <Document>'
     hdr_kml += "<name>#{@name}</name>"
-    hdr_file = File.open('src/raw/styles_sitac.xml', 'r')
+    hdr_file = File.open('lib/raw/styles_sitac.xml', 'r')
     hdr_kml += hdr_file.read.to_s
     @content += hdr_kml
   end
