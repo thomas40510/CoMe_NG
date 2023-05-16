@@ -15,7 +15,7 @@ require_relative 'ast'
 require_relative 'log_utils'
 
 # GUI for CoMe_NG
-# @version 1.2.0
+# @version 1.2.3
 # @author PRV
 # @date 2023
 class CoMe_UI
