@@ -1,0 +1,16 @@
+# XML lexer from given set of syntax
+# @author PRV
+# @note This lexer is auto-generated from a xml file, extracting its keywords
+class XMLLexer
+  include LogUtils
+
+  def initialize: (String file, ?::String syntax) -> void
+
+  def token: (Token tk) -> void
+
+  def gen_lexer: () -> void
+
+  def get_tokens: () -> Array[Token]
+
+  def tokenize: () -> Array[Token]
+end

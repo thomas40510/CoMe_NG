@@ -21,14 +21,20 @@ module SITACObjects
   end
 end
 
+# Generic Figure class
+class Figure
+  def initialize(*_args); end
+end
+
 # Represents a point
-class Point
+class Point < Figure
   attr_reader :name, :latitude, :longitude
 
   # @param name [String] the name of the point
   # @param latitude [Float] the latitude of the point
   # @param longitude [Float] the longitude of the point
   def initialize(name, latitude, longitude)
+    super
     @name = name
     @latitude = latitude
     @longitude = longitude
@@ -40,12 +46,13 @@ class Point
 end
 
 # Represents a line, given a list of points
-class Line
+class Line < Figure
   attr_reader :name, :points
 
   # @param name [String] the name of the line
   # @param points [Array<Point>, Array<Array>] the list of points of the line
   def initialize(name, points)
+    super
     @name = name
     @points = []
     points.each do |point|
@@ -65,7 +72,7 @@ class Polygon < Line
 end
 
 # Represents a rectangle, given a starting point, a horizontal length and a vertical length
-class Rectangle
+class Rectangle < Figure
   attr_reader :name, :start, :horizontal, :vertical
 
   # @param name [String] the name of the rectangle
@@ -73,6 +80,7 @@ class Rectangle
   # @param horizontal [Float] the horizontal length of the rectangle
   # @param vertical [Float] the vertical length of the rectangle
   def initialize(name, start, horizontal, vertical)
+    super
     @name = name
     @start = start
     @horizontal = horizontal
@@ -86,7 +94,7 @@ end
 
 # Represents a bull's eye, given its characteristics (center, radii, nbr of rings, distance between rings)
 # @see: https://server.3rd-wing.net/public/Galevsky/Utilisation%20Bullseye.pdf
-class Bullseye
+class Bullseye < Figure
   attr_reader :name, :center, :hradius, :vradius, :rings, :ring_distance
 
   # @param name [String] the name of the bull's eye
@@ -96,6 +104,7 @@ class Bullseye
   # @param rings [Integer] the number of rings of the bull's eye
   # @param ring_distance [Float] the distance between rings of the bull's eye
   def initialize(name, center, hradius, vradius, rings, ring_distance)
+    super
     @name = name
     @center = as_point(center)
     @hradius = hradius / 2
@@ -110,7 +119,7 @@ class Bullseye
 end
 
 # Represents a ellipse, given its center and radii
-class Ellipse
+class Ellipse < Figure
   attr_reader :name, :center, :hradius, :vradius
 
   # @param name [String] the name of the ellipse
@@ -118,6 +127,7 @@ class Ellipse
   # @param hradius [Float] the horizontal radius of the ellipse
   # @param vradius [Float] the vertical radius of the ellipse
   def initialize(name, center, hradius, vradius)
+    super
     @name = name
     @center = as_point(center)
     @hradius = hradius / 2
@@ -142,7 +152,7 @@ class Circle < Ellipse
 end
 
 # Represents a corridor, given its starting point, its ending point and its width
-class Corridor
+class Corridor < Figure
   attr_reader :name, :start_point, :end_point, :width
 
   # @param name [String] the name of the corridor
@@ -150,6 +160,7 @@ class Corridor
   # @param endpt [Point, Array] the ending point of the corridor
   # @param width [Float] the width of the corridor
   def initialize(name, startpt, endpt, width)
+    super
     @name = name
     @start_point = as_point(startpt)
     @end_point = as_point(endpt)
