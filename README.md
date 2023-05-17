@@ -33,26 +33,28 @@ Le projet, intitulé "CoMe_NG", pour "Convertisseur Melissa de Nouvelle Généra
 ## Utilisation
 On donne un fichier `test.xml`, dans le répertoire `input`, à des fins de test. D'autres fichiers, générés par ntk, pourront être ajoutés au fur et à mesure des essais menés en escadron.
 
-- Pour convertir le fichier en `kml`, depuis le répertoire racine (`CoMe_NG`) :
-```bash
-ruby come_ng.rb input/test.xml
+- Commencer par installer les dépendances `Ruby` depuis le répertoire du projet :
+```shell
+bundle install
 ```
 
-- Pour afficher les options disponibles :
-```bash
-ruby come_ng.rb -h
+- Puis lancer simplement l'interface graphique :
+```shell
+ruby lib/come_ui.rb
 ```
 
-- Pour afficher l'AST :
-```bash
-ruby come_ng.rb input/test.xml -a
-```
+Une fois l'interface graphique lancée, elle ressemble à ceci :
+![img.png](docs/img/ui_main.png)
+Il suffit alors de choisir le fichier à ouvrir, puis de générer le kml. Le programme demandera l'emplacement souhaité pour le fichier à générer (le nom du fichier est généré automatiquement).
 
-L'export est alors réalisé dans le répertoire `output`, et il est possible de l'afficher sur Google Earth, par exemple.
+Une fois le fichier généré, on peut ouvrir le répertoire le contenant en cliquant sur le bouton correspondant.
+
+![ui_done.png](docs%2Fimg%2Fui_done.png)
 
 ## Structure du projet
 Le projet est composé des fichiers `Ruby` suivants :
-- `come_ng.rb` : le fichier principal, qui permet de lancer la conversion
+- `come_andline.rb` : le fichier principal permettant un fonctionnement en ligne de commande (obsolète)
+- `come_ui.rb` : le fichier principal permettant un fonctionnement en interface graphique
 - `sitac_lexer.rb` : le lexer, qui permet de "découper" le fichier XML en tokens
 - `sitac_parser.rb` : le parser, qui permet de "parser" les tokens et de générer l'AST
 - `ast.rb` permettant la génération de l'AST
@@ -87,11 +89,11 @@ class Ellipse {
     center
     hradius
 }
+class Figure
 class Line {
     name
     points
 }
-class Object
 class Point {
     name
     longitude
@@ -106,16 +108,14 @@ class Rectangle {
 }
 class SITACObjects
 
-Object  -->  Bullseye 
+Figure  -->  Bullseye 
 Ellipse  -->  Circle 
-Object  -->  Corridor 
-Object  -->  Ellipse 
-Object  -->  Line 
-SITACObjects  ..>  Object 
-Object  -->  Point 
+Figure  -->  Corridor 
+Figure  -->  Ellipse 
+SITACObjects  ..>  Figure 
+Figure  -->  Line 
+Figure  -->  Point 
 Line  -->  Polygon 
-Object  -->  Rectangle 
-
+Figure  -->  Rectangle
 ```
-
 

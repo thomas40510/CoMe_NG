@@ -9,7 +9,7 @@ GEM
     glimmer (2.7.3)
       array_include_methods (~> 1.4.0)
       facets (>= 3.1.0, < 4.0.0)
-    glimmer-dsl-libui (0.7.6)
+    glimmer-dsl-libui (0.7.7)
       chunky_png (~> 1.4.0)
       color (~> 1.8)
       equalizer (= 0.0.11)
@@ -37,6 +37,9 @@ PLATFORMS
 DEPENDENCIES
   glimmer-dsl-libui
   graph
+
+RUBY VERSION
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.4.13

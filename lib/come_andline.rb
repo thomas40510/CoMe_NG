@@ -7,7 +7,8 @@ require_relative 'kml_maker'
 require_relative 'ast'
 require_relative 'log_utils'
 
-# Main file for CoMe_NG
+# Main file for CoMe_NG from command-line (DEPRECATED)
+# @deprecated
 
 # CL format : ruby come_ng.rb <file.xml> -o [file.kml] -s [ntk/melissa] -n [name]
 # -o : output file
