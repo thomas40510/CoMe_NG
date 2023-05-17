@@ -23,7 +23,6 @@ class CoMe_UI
 
   @@logtext = []
 
-  # Constants
   BG_COLOR = :ghost_white
   COLORS = {
     red: "\e[31m",
@@ -66,18 +65,18 @@ class CoMe_UI
       margined true
 
       vertical_box do
-        @label = label('No file opened yet')
+        @label = label('Aucun fichier ouvert...')
         horizontal_box do
-          button('Open') do
+          button('Ouvrir une SITAC') do
             on_clicked do
               @filename = open_file
               next unless @filename
 
               # update label
-              @label.text = "📖 Opened file: #{@filename}"
+              @label.text = "📖 Fichier ouvert : #{@filename}"
             end
           end
-          button('Generate KML') do
+          button('Générer le KML') do
             on_clicked do
               next unless @filename
 
@@ -102,11 +101,11 @@ class CoMe_UI
               @outfile = output
 
               # update label
-              @label.text = "✅ Generated file: #{output}"
+              @label.text = "✅ Fichier généré : #{output}"
               @openbtn.enabled = true
             end
           end
-          @openbtn = button('Show in Finder') do
+          @openbtn = button('Afficher') do
             next unless @outfile
 
             # get system type (Darwin, Linux, Windows)

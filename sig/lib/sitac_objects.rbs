@@ -24,6 +24,8 @@ class Point
   def initialize: (String name, Float latitude, Float longitude) -> void
 
   def accept: (Visitor visitor) -> void
+
+  def to_p: -> Point
 end
 
 # Represents a line, given a list of points

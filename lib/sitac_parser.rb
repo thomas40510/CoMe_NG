@@ -36,7 +36,7 @@ end
 # Parser for SITAC files
 # @note This class is used to parse a SITAC file and identify its objects
 # @author PRV
-# @version 1.0.1
+# @version 1.1.0
 # @date 2023
 class NorthropParser < Parser
   include SITACParser
@@ -118,21 +118,13 @@ class NorthropParser < Parser
     points.each do |point|
       coords << parse_point(point.first)
     end
-    startpt = coords[0]
-    endpt = coords[1]
+    start_pt = coords[0]
+    end_pt = coords[1]
     width = token.match(@regexes[:figHoriz])[1].to_f
-    Corridor.new(name, startpt, endpt, width)
+    Corridor.new(name, start_pt, end_pt, width)
   end
 
 rescue StandardError => e
   Log.error("Error while processing: #{e}", 'CoMe_Parser')
 
-end
-
-if __FILE__ == $PROGRAM_NAME
-  lexer = XMLLexer.new('input/test.xml')
-  tokens = lexer.tokenize
-  parser = NorthropParser.new(tokens)
-  figures = parser.parse_figures
-  puts figures
 end

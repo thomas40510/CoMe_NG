@@ -86,7 +86,7 @@ class KMLMaker < Visitor
   # export the kml file
   # @param filename [String] the name of the kml file
   # @return [void]
-  def export: (String filename) -> void
+  def export: (String filename) -> String
 
   def header: () -> void
 

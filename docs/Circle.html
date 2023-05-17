@@ -74,6 +74,8 @@
         <ul class="fullTree">
           <li>Object</li>
           
+            <li class="next"><span class='object_link'><a href="Figure.html" title="Figure (class)">Figure</a></span></li>
+          
             <li class="next"><span class='object_link'><a href="Ellipse.html" title="Ellipse (class)">Ellipse</a></span></li>
           
             <li class="next">Circle</li>
@@ -96,7 +98,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>src/sitac_objects.rb</dd>
+    <dd>lib/sitac_objects.rb</dd>
   </dl>
   
 </div>
@@ -264,6 +266,23 @@
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Ellipse.html" title="Ellipse (class)">Ellipse</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="Ellipse.html#accept-instance_method" title="Ellipse#accept (method)">#accept</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="SITACObjects.html" title="SITACObjects (module)">SITACObjects</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SITACObjects.html#as_point-instance_method" title="SITACObjects#as_point (method)">#as_point</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -345,12 +364,12 @@
       <pre class="lines">
 
 
-139
-140
-141</pre>
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 139</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 150</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_center'>center</span><span class='comma'>,</span> <span class='id identifier rubyid_radius'>radius</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_center'>center</span><span class='comma'>,</span> <span class='id identifier rubyid_radius'>radius</span><span class='comma'>,</span> <span class='id identifier rubyid_radius'>radius</span><span class='rparen'>)</span>
@@ -393,12 +412,12 @@
       <pre class="lines">
 
 
-134
-135
-136</pre>
+145
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_center'>center</span>
   <span class='ivar'>@center</span>
@@ -436,12 +455,12 @@
       <pre class="lines">
 
 
-134
-135
-136</pre>
+145
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -479,12 +498,12 @@
       <pre class="lines">
 
 
-134
-135
-136</pre>
+145
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 145</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_radius'>radius</span>
   <span class='ivar'>@radius</span>
@@ -500,7 +519,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 11 11:01:21 2023 by
+  Generated on Wed May 17 10:41:09 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.2.0).
 </div>

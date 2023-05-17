@@ -5,19 +5,16 @@
 # This file contains the classes representing SITAC objects, with their main attributes.
 # @note No logic is implemented in this module, only the representation of the objects.
 # @author PRV
-# @version 1.0.0
+# @version 1.1.1
 # @date 2023
 
 # utility function
 module SITACObjects
   # ensure a point is a Point object
   # @param point [Point, Array] the point to convert
+  # @return [Point] the point as a Point object
   def as_point(point)
-    if point.instance_of?(Point) # already a Point object
-      point
-    else # point is a list of coordinates
-      Point.new('', point[0], point[1])
-    end
+    point.instance_of?(Point) ? point.to_p : Point.new('', point[0], point[1])
   end
 end
 
@@ -42,6 +39,10 @@ class Point < Figure
 
   def accept(visitor)
     visitor.visit_point self
+  end
+
+  def to_p
+    self
   end
 end
 
@@ -173,4 +174,4 @@ class Corridor < Figure
 end
 
 # register the SITACObjects module for all classes
-Object.include SITACObjects
+Figure.include SITACObjects

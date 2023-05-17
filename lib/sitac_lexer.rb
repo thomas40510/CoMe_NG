@@ -7,7 +7,7 @@ require_relative 'log_utils'
 
 # XML lexer from given set of syntax
 # @author PRV
-# @note This lexer is auto-generated from a xml file, extracting its keywords
+# @note This lexer is auto-generated from a semantics file
 class XMLLexer
   include LogUtils
   # Initialize the lexer

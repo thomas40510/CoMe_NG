@@ -69,10 +69,12 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName">Object</span>
+      <span class="inheritName"><span class='object_link'><a href="Figure.html" title="Figure (class)">Figure</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Figure.html" title="Figure (class)">Figure</a></span></li>
           
             <li class="next">Corridor</li>
           
@@ -94,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>src/sitac_objects.rb</dd>
+    <dd>lib/sitac_objects.rb</dd>
   </dl>
   
 </div>
@@ -297,6 +299,23 @@
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="SITACObjects.html" title="SITACObjects (module)">SITACObjects</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="SITACObjects.html#as_point-instance_method" title="SITACObjects#as_point (method)">#as_point</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -394,17 +413,19 @@
       <pre class="lines">
 
 
-152
-153
-154
-155
-156
-157</pre>
+163
+164
+165
+166
+167
+168
+169</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 152</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_startpt'>startpt</span><span class='comma'>,</span> <span class='id identifier rubyid_endpt'>endpt</span><span class='comma'>,</span> <span class='id identifier rubyid_width'>width</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@start_point</span> <span class='op'>=</span> <span class='id identifier rubyid_as_point'>as_point</span><span class='lparen'>(</span><span class='id identifier rubyid_startpt'>startpt</span><span class='rparen'>)</span>
   <span class='ivar'>@end_point</span> <span class='op'>=</span> <span class='id identifier rubyid_as_point'>as_point</span><span class='lparen'>(</span><span class='id identifier rubyid_endpt'>endpt</span><span class='rparen'>)</span>
@@ -448,12 +469,12 @@
       <pre class="lines">
 
 
-146
-147
-148</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_end_point'>end_point</span>
   <span class='ivar'>@end_point</span>
@@ -491,12 +512,12 @@
       <pre class="lines">
 
 
-146
-147
-148</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -534,12 +555,12 @@
       <pre class="lines">
 
 
-146
-147
-148</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_start_point'>start_point</span>
   <span class='ivar'>@start_point</span>
@@ -577,12 +598,12 @@
       <pre class="lines">
 
 
-146
-147
-148</pre>
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 146</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 157</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_width'>width</span>
   <span class='ivar'>@width</span>
@@ -614,12 +635,12 @@
       <pre class="lines">
 
 
-159
-160
-161</pre>
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/sitac_objects.rb', line 159</span>
+      <pre class="code"><span class="info file"># File 'lib/sitac_objects.rb', line 171</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='id identifier rubyid_visitor'>visitor</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_visitor'>visitor</span><span class='period'>.</span><span class='id identifier rubyid_visit_corridor'>visit_corridor</span> <span class='kw'>self</span>
@@ -634,7 +655,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 11 11:01:21 2023 by
+  Generated on Wed May 17 10:41:09 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.2.0).
 </div>
