@@ -96,27 +96,26 @@
 
 <p>On donne un fichier <code>test.xml</code>, dans le répertoire <code>input</code>, à des fins de test. D’autres fichiers, générés par ntk, pourront être ajoutés au fur et à mesure des essais menés en escadron.</p>
 <ul><li>
-<p>Pour convertir le fichier en <code>kml</code>, depuis le répertoire racine (<code>CoMe_NG</code>) :</p>
+<p>Commencer par installer les dépendances <code>Ruby</code> depuis le répertoire du projet :</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_come_ng'>come_ng</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='id identifier rubyid_input'>input</span><span class='op'>/</span><span class='id identifier rubyid_test'>test</span><span class='period'>.</span><span class='id identifier rubyid_xml'>xml</span>
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_install'>install</span>
 </code></pre>
 </li><li>
-<p>Pour afficher les options disponibles :</p>
+<p>Puis lancer simplement l'interface graphique :</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_come_ng'>come_ng</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span> <span class='op'>-</span><span class='id identifier rubyid_h'>h</span>
-</code></pre>
-</li><li>
-<p>Pour afficher l'AST :</p>
-
-<pre class="code ruby"><code class="ruby">ruby come_ng.rb input/test.xml -a
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_ruby'>ruby</span> <span class='id identifier rubyid_lib'>lib</span><span class='op'>/</span><span class='id identifier rubyid_come_ui'>come_ui</span><span class='period'>.</span><span class='id identifier rubyid_rb'>rb</span>
 </code></pre>
 </li></ul>
 
-<p>L’export est alors réalisé dans le répertoire <code>output</code>, et il est possible de l’afficher sur Google Earth, par exemple.</p>
+<p>Une fois l’interface graphique lancée, elle ressemble à ceci : <img src="img/ui_main.png"> Il suffit alors de choisir le fichier à ouvrir, puis de générer le kml. Le programme demandera l’emplacement souhaité pour le fichier à générer (le nom du fichier est généré automatiquement).</p>
+
+<p>Une fois le fichier généré, on peut ouvrir le répertoire le contenant en cliquant sur le bouton correspondant.</p>
+
+<p><img src="img/ui_done.png"></p>
 
 <h2 id="label-Structure+du+projet">Structure du projet</h2>
 
-<p>Le projet est composé des fichiers <code>Ruby</code> suivants : - <code>come_ng.rb</code> : le fichier principal, qui permet de lancer la conversion - <code>sitac_lexer.rb</code> : le lexer, qui permet de “découper” le fichier XML en tokens - <code>sitac_parser.rb</code> : le parser, qui permet de “parser” les tokens et de générer l’AST - <code>ast.rb</code> permettant la génération de l’AST - <code>sitac_objects.rb</code> : le fichier contenant les classes génériques des objets de la SiTac - <code>sem_ntk.rb</code> : le fichier contenant la sémantique spécifique à la SiTac NTK - <code>kml_maker.rb</code> : conversion des objets créés en fichier KML - <code>log_utils.rb</code> implémentant un logger, permettant d’afficher des informations claires dans la console - <code>token.rb</code> implémentant la classe Token, permettant de représenter les tokens</p>
+<p>Le projet est composé des fichiers <code>Ruby</code> suivants : - <code>come_andline.rb</code> : le fichier principal permettant un fonctionnement en ligne de commande (obsolète) - <code>come_ui.rb</code> : le fichier principal permettant un fonctionnement en interface graphique - <code>sitac_lexer.rb</code> : le lexer, qui permet de “découper” le fichier XML en tokens - <code>sitac_parser.rb</code> : le parser, qui permet de “parser” les tokens et de générer l’AST - <code>ast.rb</code> permettant la génération de l’AST - <code>sitac_objects.rb</code> : le fichier contenant les classes génériques des objets de la SiTac - <code>sem_ntk.rb</code> : le fichier contenant la sémantique spécifique à la SiTac NTK - <code>kml_maker.rb</code> : conversion des objets créés en fichier KML - <code>log_utils.rb</code> implémentant un logger, permettant d’afficher des informations claires dans la console - <code>token.rb</code> implémentant la classe Token, permettant de représenter les tokens</p>
 
 <h2 id="label-Objets+pris+en+charge">Objets pris en charge</h2>
 
@@ -143,11 +142,11 @@ class Ellipse {
     center
     hradius
 }
+class Figure
 class Line {
     name
     points
 }
-class Object
 class Point {
     name
     longitude
@@ -162,20 +161,20 @@ class Rectangle {
 }
 class SITACObjects
 
-Object  --&gt;  Bullseye 
+Figure  --&gt;  Bullseye 
 Ellipse  --&gt;  Circle 
-Object  --&gt;  Corridor 
-Object  --&gt;  Ellipse 
-Object  --&gt;  Line 
-SITACObjects  ..&gt;  Object 
-Object  --&gt;  Point 
+Figure  --&gt;  Corridor 
+Figure  --&gt;  Ellipse 
+SITACObjects  ..&gt;  Figure 
+Figure  --&gt;  Line 
+Figure  --&gt;  Point 
 Line  --&gt;  Polygon 
-Object  --&gt;  Rectangle
+Figure  --&gt;  Rectangle
 </code></pre>
 </div></div>
 
       <div id="footer">
-  Generated on Wed May 17 10:41:09 2023 by
+  Generated on Wed May 17 13:58:44 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.2.0).
 </div>
