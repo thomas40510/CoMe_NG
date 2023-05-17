@@ -78,7 +78,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 ### Ruby template
-*.gem
+# *.gem
 *.rbc
 /.config
 /coverage/
