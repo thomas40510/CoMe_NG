@@ -44,12 +44,12 @@ ruby lib/come_ui.rb
 ```
 
 Une fois l'interface graphique lancée, elle ressemble à ceci :
-![img.png](docs/img/ui_main.png)
+![img.png](docs/img/ui_main.jpg)
 Il suffit alors de choisir le fichier à ouvrir, puis de générer le kml. Le programme demandera l'emplacement souhaité pour le fichier à générer (le nom du fichier est généré automatiquement).
 
 Une fois le fichier généré, on peut ouvrir le répertoire le contenant en cliquant sur le bouton correspondant.
 
-![ui_done.png](docs%2Fimg%2Fui_done.png)
+![ui_done.png](docs/img/ui_done.jpg)
 
 ## Structure du projet
 Le projet est composé des fichiers `Ruby` suivants :
