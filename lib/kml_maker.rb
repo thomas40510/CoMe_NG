@@ -135,7 +135,7 @@ end
 
 # Convert SITAC objects into KML code
 # @autor PRV
-# @version 1.0.0
+# @version 1.1.0
 class KMLMaker < Visitor
   include KMLUtils
 
@@ -150,7 +150,7 @@ class KMLMaker < Visitor
   # @param figures [Array<Figure>] the list of figures to convert
   # @param name [String] the name of the kml file
   # @return [String] the kml code
-  def build(figures, name = "SITAC_#{Time.now.strftime('%Y%m%d_%H%M%S')}")
+  def build(figures, name = "SITAC_#{Time.now.strftime('%Y%m%d%H%M%S')}")
     @figures = figures
     @name = name
     header
@@ -166,7 +166,7 @@ class KMLMaker < Visitor
 
   # export the kml file
   # @param dirname [String] the name of the kml file
-  # @return [void]
+  # @return [String] the name of the kml file
   def export(dirname)
     # create file
     time = Time.now.strftime('%Y%m%d%H%M%S')
@@ -178,6 +178,7 @@ class KMLMaker < Visitor
 
     file
   rescue StandardError => e
+    # The directory does not exist, we create it
     if e.message.include?('No such file or directory')
       # create dir
       dir = File.dirname(file)
@@ -371,18 +372,4 @@ class KMLMaker < Visitor
   def visit_corridor(corridor)
     nil # TODO
   end
-end
-
-if __FILE__ == $PROGRAM_NAME
-  require_relative 'sitac_parser'
-  require_relative 'sitac_lexer'
-
-  lexer = XMLLexer.new('input/test.xml')
-  tokens = lexer.tokenize
-  parser = NorthropParser.new(tokens)
-  parser.parse_figures
-  figures = parser.figures
-  maker = KMLMaker.new
-  maker.build(figures, parser.name)
-  maker.export('output/test.kml')
 end

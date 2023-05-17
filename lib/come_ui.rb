@@ -23,7 +23,6 @@ class CoMe_UI
 
   @@logtext = []
 
-  # Constants
   BG_COLOR = :ghost_white
   COLORS = {
     red: "\e[31m",
