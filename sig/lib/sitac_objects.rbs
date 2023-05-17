@@ -1,0 +1,143 @@
+# utility function
+module SITACObjects
+  # ensure a point is a Point object
+  # @param point [Point, Array] the point to convert
+  def as_point: (Point | Array[Float] point) -> Point
+end
+
+# Generic Figure class
+class Figure
+
+end
+
+# Represents a point
+class Point
+  attr_reader name: String
+
+  attr_reader latitude: Float
+
+  attr_reader longitude: Float
+
+  # @param name [String] the name of the point
+  # @param latitude [Float] the latitude of the point
+  # @param longitude [Float] the longitude of the point
+  def initialize: (String name, Float latitude, Float longitude) -> void
+
+  def accept: (Visitor visitor) -> void
+
+  def to_p: -> Point
+end
+
+# Represents a line, given a list of points
+class Line
+  attr_reader name: String
+
+  attr_reader points: Array[Point]
+
+  # @param name [String] the name of the line
+  # @param points [Array<Point>, Array<Array>] the list of points of the line
+  def initialize: (String name, Array[Point] | Array[Array[Float]] points) -> void
+
+  def accept: (Visitor visitor) -> void
+end
+
+# Represents a polygon, given a list of points
+class Polygon < Line
+end
+
+# Represents a rectangle, given a starting point, a horizontal length and a vertical length
+class Rectangle
+  attr_reader name: String
+
+  attr_reader start: Point
+
+  attr_reader horizontal: Float
+
+  attr_reader vertical: Float
+
+  # @param name [String] the name of the rectangle
+  # @param start [Point, Array] the starting point of the rectangle
+  # @param horizontal [Float] the horizontal length of the rectangle
+  # @param vertical [Float] the vertical length of the rectangle
+  def initialize: (String name, [Point | Array[Float]] start, Float horizontal, Float vertical) -> void
+
+  def accept: (Visitor visitor) -> void
+end
+
+# Represents a bull's eye, given its characteristics (center, radii, nbr of rings, distance between rings)
+# @see: https://server.3rd-wing.net/public/Galevsky/Utilisation%20Bullseye.pdf
+class Bullseye
+  attr_reader name: String
+
+  attr_reader center: Point
+
+  attr_reader hradius: Float
+
+  attr_reader vradius: Float
+
+  attr_reader rings: Integer
+
+  attr_reader ring_distance: Float
+
+  # @param name [String] the name of the bull's eye
+  # @param center [Point, Array] the center of the bull's eye
+  # @param hradius [Float] the horizontal radius of the bull's eye
+  # @param vradius [Float] the vertical radius of the bull's eye
+  # @param rings [Integer] the number of rings of the bull's eye
+  # @param ring_distance [Float] the distance between rings of the bull's eye
+  def initialize: (String name, Point | Array[Float] center, Float hradius, Float vradius, Integer rings, Float ring_distance) -> void
+
+  def accept: (Visitor visitor) -> void
+end
+
+# Represents a ellipse, given its center and radii
+class Ellipse
+  attr_reader name: String
+
+  attr_reader center: Point
+
+  attr_reader hradius: Float
+
+  attr_reader vradius: Float
+
+  # @param name [String] the name of the ellipse
+  # @param center [Point, Array] the center of the ellipse
+  # @param hradius [Float] the horizontal radius of the ellipse
+  # @param vradius [Float] the vertical radius of the ellipse
+  def initialize: (String name, Point | Array[Float] center, Float hradius, Float vradius) -> void
+
+  def accept: (Visitor visitor) -> void
+end
+
+# Represents a circle, given its center and radius
+class Circle < Ellipse
+  attr_reader name: String
+
+  attr_reader center: Point
+
+  attr_reader radius: Float
+
+  # @param name [String] the name of the circle
+  # @param center [Point, Array] the center of the circle
+  # @param radius [Float] the radius of the circle
+  def initialize: (String name, Point | Array[Float] center, Float radius) -> void
+end
+
+# Represents a corridor, given its starting point, its ending point and its width
+class Corridor
+  attr_reader name: String
+
+  attr_reader start_point: Point
+
+  attr_reader end_point: Point
+
+  attr_reader width: Float
+
+  # @param name [String] the name of the corridor
+  # @param startpt [Point, Array] the starting point of the corridor
+  # @param endpt [Point, Array] the ending point of the corridor
+  # @param width [Float] the width of the corridor
+  def initialize: (String name, Point | Array[Float] startpt, Point | Array[Float] endpt, Float width) -> void
+
+  def accept: (Visitor visitor) -> void
+end

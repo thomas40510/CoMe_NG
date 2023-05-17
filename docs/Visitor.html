@@ -99,7 +99,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>src/kml_maker.rb</dd>
+    <dd>lib/kml_maker.rb</dd>
   </dl>
   
 </div>
@@ -417,7 +417,7 @@
 71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@content</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
@@ -488,7 +488,7 @@
 115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 110</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_bullseye'>visit_bullseye</span><span class='lparen'>(</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Bullseye: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -555,7 +555,7 @@
 133</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 128</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_corridor'>visit_corridor</span><span class='lparen'>(</span><span class='id identifier rubyid_corridor'>corridor</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Corridor: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_corridor'>corridor</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -622,7 +622,7 @@
 124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_ellipse'>visit_ellipse</span><span class='lparen'>(</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Ellipse: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -690,7 +690,7 @@
 87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_line'>visit_line</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Line: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -755,7 +755,7 @@
 77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_point'>visit_point</span><span class='lparen'>(</span><span class='id identifier rubyid_point'>point</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Point: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'> (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span><span class='embexpr_end'>}</span><span class='tstring_content'>, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_point'>point</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span><span class='embexpr_end'>}</span><span class='tstring_content'>)\n</span><span class='tstring_end'>&quot;</span></span>
@@ -820,7 +820,7 @@
 97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_polygon'>visit_polygon</span><span class='lparen'>(</span><span class='id identifier rubyid_polygon'>polygon</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Polygon: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_polygon'>polygon</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -888,7 +888,7 @@
 106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 101</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_rectangle'>visit_rectangle</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='rparen'>)</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Rectangle: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span>
@@ -906,7 +906,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 11 11:01:21 2023 by
+  Generated on Wed May 17 10:41:09 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.2.0).
 </div>

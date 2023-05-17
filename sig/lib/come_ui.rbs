@@ -1,0 +1,32 @@
+# GUI for CoMe_NG
+# @version 1.2.0
+# @author PRV
+# @date 2023
+class CoMe_UI
+  include Glimmer
+
+  # Constants
+  BG_COLOR: Symbol
+
+  COLORS: Hash[Symbol, String]
+
+  # Datastructure for log entries
+  LogEntry: class
+
+  attr_accessor logs: Array[Struct[String]]
+
+  # Initialize vars and launch the UI
+  def initialize: () -> void
+
+  # Create a UI window and display it
+  def launch: () -> void
+
+  # Create the UI window with its elements and logic.
+  # @note It follows the Glimmer DSL syntax.
+  # @see https://github.com/AndyObtiva/glimmer-dsl-libui
+  # @return [UI::Window] the UI window
+  def create_window: () -> untyped
+
+  # Redirect $stdout and write to @@logtext
+  def get_stdout: () -> void
+end

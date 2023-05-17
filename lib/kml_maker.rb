@@ -135,11 +135,11 @@ end
 
 # Convert SITAC objects into KML code
 # @autor PRV
-# @version 1.0.0
+# @version 1.1.0
 class KMLMaker < Visitor
   include KMLUtils
 
-  attr_reader :content
+  attr_reader :content, :name
 
   def initialize
     super
@@ -150,7 +150,7 @@ class KMLMaker < Visitor
   # @param figures [Array<Figure>] the list of figures to convert
   # @param name [String] the name of the kml file
   # @return [String] the kml code
-  def build(figures, name = "SITAC_#{Time.now.strftime('%Y%m%d_%H%M%S')}")
+  def build(figures, name = "SITAC_#{Time.now.strftime('%Y%m%d%H%M%S')}")
     @figures = figures
     @name = name
     header
@@ -165,42 +165,49 @@ class KMLMaker < Visitor
   end
 
   # export the kml file
-  # @param filename [String] the name of the kml file
-  # @return [void]
-  def export(filename)
+  # @param dirname [String] the name of the kml file
+  # @return [String] the name of the kml file
+  def export(dirname)
     # create file
-    file = "output/#{filename}"
+    time = Time.now.strftime('%Y%m%d%H%M%S')
+    file = "#{dirname}/#{@name}_#{time}.kml"
     kml_file = File.open(file, 'w')
     kml_file.write(@content)
     kml_file.close
     Log.info("Successfully exported KML file #{file}!", 'CoMe_KMLMaker')
 
+    file
   rescue StandardError => e
+    # The directory does not exist, we create it
     if e.message.include?('No such file or directory')
       # create dir
-      dir = File.dirname(filename)
+      dir = File.dirname(file)
       Dir.mkdir(dir) unless File.exist?(dir)
       retry
     end
     Log.err("Cannot create KML file #{filename}! Got error #{e}", 'CoMe_KMLMaker')
   end
 
+  # Generate the header of the kml file
   def header
     hdr_kml = '<?xml version="1.0" encoding="UTF-8"?>
                 <kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
                 <Document>'
     hdr_kml += "<name>#{@name}</name>"
-    hdr_file = File.open('src/raw/styles_sitac.xml', 'r')
+    hdr_file = File.open('lib/raw/styles_sitac.xml', 'r')
     hdr_kml += hdr_file.read.to_s
     @content += hdr_kml
   end
 
+  # Generate the footer of the kml file
   def footer
     ftr = "</Document>
           </kml>"
     @content += ftr
   end
 
+  # Add a point to the kml file
+  # @param point [Point] the point to add
   def visit_point(point)
     kml_point = "<Placemark>
                     <name>#{point.name}</name>
@@ -212,6 +219,8 @@ class KMLMaker < Visitor
     @content += kml_point
   end
 
+  # Add a line to the kml file
+  # @param line [Line] the line to add
   def visit_line(line)
     kml_line = "<Placemark>
                   <name>#{line.name}</name>
@@ -227,6 +236,8 @@ class KMLMaker < Visitor
     @content += kml_line
   end
 
+  # Add a polygon to the kml file
+  # @param polygon [Polygon] the polygon to add
   def visit_polygon(polygon)
     polygon.points << polygon.points[0] if polygon.points[-1] != polygon.points[0]
     kml_poly = "<Placemark>
@@ -243,41 +254,46 @@ class KMLMaker < Visitor
     @content += kml_poly
   end
 
+  # Add a rectangle to the kml file
+  # @param rectangle [Rectangle] the rectangle to add
   def visit_rectangle(rectangle)
-    startpt = rectangle.start
-    rectpoints = []
-    rectpoints << startpt
-    rectpoints << Point.new('', startpt.latitude + meters_to_degrees(rectangle.vertical), startpt.longitude)
-    rectpoints << Point.new('', startpt.latitude + meters_to_degrees(rectangle.vertical),
-                            startpt.longitude + meters_to_degrees(rectangle.horizontal))
-    rectpoints << Point.new('', startpt.latitude, startpt.longitude + meters_to_degrees(rectangle.horizontal))
-    rectpoints << startpt
+    start_point = rectangle.start
+    rect_points = []
+    rect_points << start_point
+    rect_points << Point.new('', start_point.latitude + meters_to_degrees(rectangle.vertical), start_point.longitude)
+    rect_points << Point.new('', start_point.latitude + meters_to_degrees(rectangle.vertical),
+                             start_point.longitude + meters_to_degrees(rectangle.horizontal))
+    rect_points << Point.new('', start_point.latitude, start_point.longitude + meters_to_degrees(rectangle.horizontal))
+    rect_points << start_point
 
-    visit_polygon(Polygon.new(rectangle.name, rectpoints))
+    visit_polygon(Polygon.new(rectangle.name, rect_points))
   end
 
+  # Add a Bullseye to the kml file
+  # @param bullseye [Bullseye] the bullseye to add
   def visit_bullseye(bullseye)
     nil unless bullseye.rings.positive?
 
     points_thick = []
     points_thin = []
 
-    nbrings = bullseye.rings
+    nb_rings = bullseye.rings
     distance = meters_to_degrees(bullseye.ring_distance) / 2
     radius = meters_to_degrees(bullseye.vradius)
-    smallest_radius = radius - (nbrings * distance)
+    smallest_radius = radius - (nb_rings * distance)
     center_coords = [bullseye.center.latitude, bullseye.center.longitude]
     # thick lines (main rings, every 2 rings)
-    (0..nbrings).step(2) do |i|
+    (0..nb_rings).step(2) do |i|
       rad = smallest_radius + i * distance
       points_thick << create_circle(center_coords, rad)
     end
     # thin lines (every other ring)
-    (1..nbrings).step(2) do |i|
+    (1..nb_rings).step(2) do |i|
       rad = smallest_radius + i * distance
       points_thin << create_circle(center_coords, rad)
     end
 
+    # Build main circles
     kml_bullseye_main = "<Placemark>
                     <name>#{bullseye.name}</name>
                     <styleUrl>#style_bulls</styleUrl>
@@ -290,6 +306,8 @@ class KMLMaker < Visitor
       kml_bullseye_main += '</coordinates></LinearRing></outerBoundaryIs></Polygon>'
     end
     kml_bullseye_main += '</MultiGeometry></Placemark>'
+
+    # Build secondary circles
     kml_bulls_secondary = "<Placemark>
                     <name>#{bullseye.name}_second</name>
                     <styleUrl>#style_bulls_thin</styleUrl>
@@ -302,6 +320,8 @@ class KMLMaker < Visitor
       kml_bulls_secondary += '</coordinates></LinearRing></outerBoundaryIs></Polygon>'
     end
     kml_bulls_secondary += '</MultiGeometry></Placemark>'
+
+    # Build lines
     kml_bulls_cross = "<Placemark>
                     <name>#{bullseye.name}_lines</name>
                     <styleUrl>#style_line</styleUrl>
@@ -321,11 +341,13 @@ class KMLMaker < Visitor
     @content += kml_bullseye_main + kml_bulls_secondary + kml_bulls_cross
   end
 
+  # Add an ellipse to the kml file
+  # @param ellipse [Ellipse] the ellipse to add
   def visit_ellipse(ellipse)
-    hradius = meters_to_degrees(ellipse.hradius)
-    vradius = meters_to_degrees(ellipse.vradius)
+    h_radius = meters_to_degrees(ellipse.hradius)
+    v_radius = meters_to_degrees(ellipse.vradius)
     center = [ellipse.center.latitude, ellipse.center.longitude]
-    points = create_ellipse(center, hradius, vradius)
+    points = create_ellipse(center, h_radius, v_radius)
 
     kml_ellipse = "<Placemark>
                     <name>#{ellipse.name}</name>
@@ -345,21 +367,9 @@ class KMLMaker < Visitor
     @content += kml_ellipse
   end
 
+  # Add a corridor to the kml file
+  # @param corridor [Corridor] the corridor to add
   def visit_corridor(corridor)
-    nil
+    nil # TODO
   end
-end
-
-if __FILE__ == $PROGRAM_NAME
-  require_relative 'sitac_parser'
-  require_relative 'sitac_lexer'
-
-  lexer = XMLLexer.new('input/test.xml')
-  tokens = lexer.tokenize
-  parser = NorthropParser.new(tokens)
-  parser.parse_figures
-  figures = parser.figures
-  maker = KMLMaker.new
-  maker.build(figures, parser.name)
-  maker.export('output/test.kml')
 end

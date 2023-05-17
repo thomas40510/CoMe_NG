@@ -1,0 +1,64 @@
+# Parser utility for Melissa Converter NG
+# @author PRV
+# @version 1.0.0
+# @date 2023
+module SITACParser
+  include LogUtils
+
+  # Parsing exception class
+  class ParsingException < StandardError
+  end
+end
+
+# Generic Parser class
+# @author PRV
+# @version 1.0.0
+class Parser
+  include SITACParser
+
+  @regexes: Array[Regexp]
+  @sems: Array[::String]
+
+  attr_reader figures: Array[Figure]
+
+  attr_reader tokens: Array[Token]
+
+  attr_reader name: String?
+
+  def initialize: (Array[Token] tokens, ?::String semantics) -> void
+end
+
+# Parser for SITAC files
+# @note This class is used to parse a SITAC file and identify its objects
+# @author PRV
+# @version 1.0.1
+# @date 2023
+class NorthropParser < Parser
+  include SITACParser
+
+  attr_reader figures: Array[Figure]
+
+  attr_reader tokens: Array[Token]
+
+  attr_reader name: String
+
+  def initialize: (Array[Token] tokens) -> void
+
+  def parse_figures: () -> Array[Figure]
+
+  def parse_figure: (Token token) -> Figure
+
+  def radii: (Token token) -> ::Array[Float]
+
+  def parse_point: (Token token, ?::String name) -> Point
+
+  def parse_line: (Token token, ?::String name) -> Line
+
+  def parse_bullseye: (Token token, ?::String name) -> Bullseye
+
+  def parse_ellipse: (Token token, ?::String name) -> Ellipse
+
+  def parse_rectangle: (Token token, ?::String name) -> Rectangle
+
+  def parse_corridor: (Token token, ?::String name) -> Corridor
+end

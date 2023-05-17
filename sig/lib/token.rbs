@@ -1,0 +1,21 @@
+# Token class for Melissa Converter NG
+# @note This class is used to represent a token
+# @version 1.0.0
+# @author JCLL -- https://github.com/JC-LL
+class Token
+  attr_accessor type: Symbol
+
+  attr_accessor value: String
+
+  attr_accessor position: Integer
+
+  def initialize: (Symbol type, Array[String | Array[String]] value, Integer position) -> void
+
+  def is_a?: (String type) -> bool
+
+  def accept: (Visitor visitor) -> nil
+
+  def self.create: (String str) -> Token
+
+  def to_s: () -> ::String
+end

@@ -101,7 +101,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>src/kml_maker.rb</dd>
+    <dd>lib/kml_maker.rb</dd>
   </dl>
   
 </div>
@@ -126,7 +126,7 @@
       
         
         <div class='inline'>
-<p>1.0.0</p>
+<p>1.1.0</p>
 </div>
       
     </li>
@@ -175,6 +175,35 @@
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#name-instance_method" title="#name (instance method)">#<strong>name</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute name.</p>
+</div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -191,7 +220,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#build-instance_method" title="#build (instance method)">#<strong>build</strong>(figures, name = &quot;SITAC_#{Time.now.strftime(&#39;%Y%m%d_%H%M%S&#39;)}&quot;)  &#x21d2; String </a>
+      <a href="#build-instance_method" title="#build (instance method)">#<strong>build</strong>(figures, name = &quot;SITAC_#{Time.now.strftime(&#39;%Y%m%d%H%M%S&#39;)}&quot;)  &#x21d2; String </a>
     
 
     
@@ -215,7 +244,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>(filename)  &#x21d2; void </a>
+      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>(dirname)  &#x21d2; String </a>
     
 
     
@@ -253,7 +282,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Generate the footer of the kml file.</p>
+</div></span>
   
 </li>
 
@@ -275,7 +306,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Generate the header of the kml file.</p>
+</div></span>
   
 </li>
 
@@ -323,7 +356,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a Bullseye to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -345,7 +380,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a corridor to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -367,7 +404,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add an ellipse to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -389,7 +428,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a line to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -411,7 +452,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a point to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -433,7 +476,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a polygon to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -455,7 +500,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Add a rectangle to the kml file.</p>
+</div></span>
   
 </li>
 
@@ -521,7 +568,7 @@
 147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='kw'>super</span>
@@ -570,10 +617,53 @@
 144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 142</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_content'>content</span>
   <span class='ivar'>@content</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="name-instance_method">
+  
+    #<strong>name</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
+  <span class='ivar'>@name</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -590,7 +680,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="build-instance_method">
   
-    #<strong>build</strong>(figures, name = &quot;SITAC_#{Time.now.strftime(&#39;%Y%m%d_%H%M%S&#39;)}&quot;)  &#x21d2; <tt>String</tt> 
+    #<strong>build</strong>(figures, name = &quot;SITAC_#{Time.now.strftime(&#39;%Y%m%d%H%M%S&#39;)}&quot;)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -613,7 +703,7 @@
         <span class='name'>figures</span>
       
       
-        <span class='type'>(<tt>Array&lt;Figure&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Figure.html" title="Figure (class)">Figure</a></span>&gt;</tt>)</span>
       
       
       
@@ -632,7 +722,7 @@
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <em class="default">(defaults to: <tt>&quot;SITAC_#{Time.now.strftime(&#39;%Y%m%d_%H%M%S&#39;)}&quot;</tt>)</em>
+        <em class="default">(defaults to: <tt>&quot;SITAC_#{Time.now.strftime(&#39;%Y%m%d%H%M%S&#39;)}&quot;</tt>)</em>
       
       
         &mdash;
@@ -684,9 +774,9 @@
 165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 153</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 153</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_figures'>figures</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SITAC_</span><span class='embexpr_beg'>#{</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y%m%d_%H%M%S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_build'>build</span><span class='lparen'>(</span><span class='id identifier rubyid_figures'>figures</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>SITAC_</span><span class='embexpr_beg'>#{</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y%m%d%H%M%S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@figures</span> <span class='op'>=</span> <span class='id identifier rubyid_figures'>figures</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
   <span class='id identifier rubyid_header'>header</span>
@@ -707,7 +797,7 @@
       <div class="method_details ">
   <h3 class="signature " id="export-instance_method">
   
-    #<strong>export</strong>(filename)  &#x21d2; <tt>void</tt> 
+    #<strong>export</strong>(dirname)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -715,7 +805,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>
+    
 <p>export the kml file</p>
 
 
@@ -727,7 +817,7 @@
   
     <li>
       
-        <span class='name'>filename</span>
+        <span class='name'>dirname</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -743,6 +833,24 @@
   
 </ul>
 
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the name of the kml file</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -766,23 +874,29 @@
 183
 184
 185
-186</pre>
+186
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 170</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span><span class='lparen'>(</span><span class='id identifier rubyid_dirname'>dirname</span><span class='rparen'>)</span>
   <span class='comment'># create file
-</span>  <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>output/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+</span>  <span class='id identifier rubyid_time'>time</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%Y%m%d%H%M%S</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_file'>file</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_dirname'>dirname</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_time'>time</span><span class='embexpr_end'>}</span><span class='tstring_content'>.kml</span><span class='tstring_end'>&quot;</span></span>
   <span class='id identifier rubyid_kml_file'>kml_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>w</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_kml_file'>kml_file</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span><span class='ivar'>@content</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_kml_file'>kml_file</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
   <span class='const'><span class='object_link'><a href="LogUtils.html#Log-constant" title="LogUtils::Log (constant)">Log</a></span></span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Successfully exported KML file </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_file'>file</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CoMe_KMLMaker</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
+  <span class='id identifier rubyid_file'>file</span>
 <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>No such file or directory</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='comment'># The directory does not exist, we create it
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>No such file or directory</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
     <span class='comment'># create dir
-</span>    <span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+</span>    <span class='id identifier rubyid_dir'>dir</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='id identifier rubyid_file'>file</span><span class='rparen'>)</span>
     <span class='const'>Dir</span><span class='period'>.</span><span class='id identifier rubyid_mkdir'>mkdir</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
     <span class='kw'>retry</span>
   <span class='kw'>end</span>
@@ -802,20 +916,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate the footer of the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-198
-199
-200
-201
-202</pre>
+203
+204
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 198</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 203</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_footer'>footer</span>
   <span class='id identifier rubyid_ftr'>ftr</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;/Document&gt;
@@ -836,31 +961,42 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate the header of the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-188
-189
-190
-191
 192
 193
 194
 195
-196</pre>
+196
+197
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 188</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_header'>header</span>
   <span class='id identifier rubyid_hdr_kml'>hdr_kml</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
               &lt;kml xmlns=&quot;http://www.opengis.net/kml/2.2&quot; xmlns:gx=&quot;http://www.google.com/kml/ext/2.2&quot; xmlns:kml=&quot;http://www.opengis.net/kml/2.2&quot; xmlns:atom=&quot;http://www.w3.org/2005/Atom&quot;&gt;
               &lt;Document&gt;</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_hdr_kml'>hdr_kml</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;name&gt;</span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/name&gt;</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_hdr_file'>hdr_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>src/raw/styles_sitac.xml</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>r</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_hdr_file'>hdr_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lib/raw/styles_sitac.xml</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>r</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hdr_kml'>hdr_kml</span> <span class='op'>+=</span> <span class='id identifier rubyid_hdr_file'>hdr_file</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='ivar'>@content</span> <span class='op'>+=</span> <span class='id identifier rubyid_hdr_kml'>hdr_kml</span>
 <span class='kw'>end</span></pre>
@@ -878,27 +1014,43 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a Bullseye to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bullseye</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Bullseye.html" title="Bullseye (class)">Bullseye</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the bullseye to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
 274
 275
 276
@@ -947,10 +1099,30 @@
 319
 320
 321
-322</pre>
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 259</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 274</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_bullseye'>visit_bullseye</span><span class='lparen'>(</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='rparen'>)</span>
   <span class='kw'>nil</span> <span class='kw'>unless</span> <span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_rings'>rings</span><span class='period'>.</span><span class='id identifier rubyid_positive?'>positive?</span>
@@ -958,23 +1130,24 @@
   <span class='id identifier rubyid_points_thick'>points_thick</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_points_thin'>points_thin</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
 
-  <span class='id identifier rubyid_nbrings'>nbrings</span> <span class='op'>=</span> <span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_rings'>rings</span>
+  <span class='id identifier rubyid_nb_rings'>nb_rings</span> <span class='op'>=</span> <span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_rings'>rings</span>
   <span class='id identifier rubyid_distance'>distance</span> <span class='op'>=</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_ring_distance'>ring_distance</span><span class='rparen'>)</span> <span class='op'>/</span> <span class='int'>2</span>
   <span class='id identifier rubyid_radius'>radius</span> <span class='op'>=</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_vradius'>vradius</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_smallest_radius'>smallest_radius</span> <span class='op'>=</span> <span class='id identifier rubyid_radius'>radius</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='id identifier rubyid_nbrings'>nbrings</span> <span class='op'>*</span> <span class='id identifier rubyid_distance'>distance</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_smallest_radius'>smallest_radius</span> <span class='op'>=</span> <span class='id identifier rubyid_radius'>radius</span> <span class='op'>-</span> <span class='lparen'>(</span><span class='id identifier rubyid_nb_rings'>nb_rings</span> <span class='op'>*</span> <span class='id identifier rubyid_distance'>distance</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_center_coords'>center_coords</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_center'>center</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span><span class='comma'>,</span> <span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_center'>center</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span><span class='rbracket'>]</span>
   <span class='comment'># thick lines (main rings, every 2 rings)
-</span>  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='id identifier rubyid_nbrings'>nbrings</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+</span>  <span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='id identifier rubyid_nb_rings'>nb_rings</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
     <span class='id identifier rubyid_rad'>rad</span> <span class='op'>=</span> <span class='id identifier rubyid_smallest_radius'>smallest_radius</span> <span class='op'>+</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='id identifier rubyid_distance'>distance</span>
     <span class='id identifier rubyid_points_thick'>points_thick</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_create_circle'>create_circle</span><span class='lparen'>(</span><span class='id identifier rubyid_center_coords'>center_coords</span><span class='comma'>,</span> <span class='id identifier rubyid_rad'>rad</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='comment'># thin lines (every other ring)
-</span>  <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='id identifier rubyid_nbrings'>nbrings</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+</span>  <span class='lparen'>(</span><span class='int'>1</span><span class='op'>..</span><span class='id identifier rubyid_nb_rings'>nb_rings</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_step'>step</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
     <span class='id identifier rubyid_rad'>rad</span> <span class='op'>=</span> <span class='id identifier rubyid_smallest_radius'>smallest_radius</span> <span class='op'>+</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='id identifier rubyid_distance'>distance</span>
     <span class='id identifier rubyid_points_thin'>points_thin</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_create_circle'>create_circle</span><span class='lparen'>(</span><span class='id identifier rubyid_center_coords'>center_coords</span><span class='comma'>,</span> <span class='id identifier rubyid_rad'>rad</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_kml_bullseye_main'>kml_bullseye_main</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
+  <span class='comment'># Build main circles
+</span>  <span class='id identifier rubyid_kml_bullseye_main'>kml_bullseye_main</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
                   &lt;name&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/name&gt;
                   &lt;styleUrl&gt;#style_bulls&lt;/styleUrl&gt;
                   &lt;MultiGeometry&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -986,7 +1159,9 @@
     <span class='id identifier rubyid_kml_bullseye_main'>kml_bullseye_main</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;/coordinates&gt;&lt;/LinearRing&gt;&lt;/outerBoundaryIs&gt;&lt;/Polygon&gt;</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_kml_bullseye_main'>kml_bullseye_main</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;/MultiGeometry&gt;&lt;/Placemark&gt;</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_kml_bulls_secondary'>kml_bulls_secondary</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
+
+  <span class='comment'># Build secondary circles
+</span>  <span class='id identifier rubyid_kml_bulls_secondary'>kml_bulls_secondary</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
                   &lt;name&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_second&lt;/name&gt;
                   &lt;styleUrl&gt;#style_bulls_thin&lt;/styleUrl&gt;
                   &lt;MultiGeometry&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -998,7 +1173,9 @@
     <span class='id identifier rubyid_kml_bulls_secondary'>kml_bulls_secondary</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;/coordinates&gt;&lt;/LinearRing&gt;&lt;/outerBoundaryIs&gt;&lt;/Polygon&gt;</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_kml_bulls_secondary'>kml_bulls_secondary</span> <span class='op'>+=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&lt;/MultiGeometry&gt;&lt;/Placemark&gt;</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_kml_bulls_cross'>kml_bulls_cross</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
+
+  <span class='comment'># Build lines
+</span>  <span class='id identifier rubyid_kml_bulls_cross'>kml_bulls_cross</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
                   &lt;name&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_bullseye'>bullseye</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>_lines&lt;/name&gt;
                   &lt;styleUrl&gt;#style_line&lt;/styleUrl&gt;
                   &lt;MultiGeometry&gt;</span><span class='tstring_end'>&quot;</span></span>
@@ -1030,22 +1207,53 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a corridor to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>corridor</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Corridor.html" title="Corridor (class)">Corridor</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the corridor to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-348
-349
-350</pre>
+372
+373
+374</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 348</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 372</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_corridor'>visit_corridor</span><span class='lparen'>(</span><span class='id identifier rubyid_corridor'>corridor</span><span class='rparen'>)</span>
-  <span class='kw'>nil</span>
-<span class='kw'>end</span></pre>
+  <span class='kw'>nil</span> <span class='comment'># TODO
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1060,44 +1268,75 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add an ellipse to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ellipse</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Ellipse.html" title="Ellipse (class)">Ellipse</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the ellipse to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-324
-325
-326
-327
-328
-329
-330
-331
-332
-333
-334
-335
-336
-337
-338
-339
-340
-341
-342
-343
-344
-345
-346</pre>
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 324</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 346</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_ellipse'>visit_ellipse</span><span class='lparen'>(</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_hradius'>hradius</span> <span class='op'>=</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_hradius'>hradius</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_vradius'>vradius</span> <span class='op'>=</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_vradius'>vradius</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_h_radius'>h_radius</span> <span class='op'>=</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_hradius'>hradius</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_v_radius'>v_radius</span> <span class='op'>=</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_vradius'>vradius</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_center'>center</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_center'>center</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span><span class='comma'>,</span> <span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_center'>center</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_points'>points</span> <span class='op'>=</span> <span class='id identifier rubyid_create_ellipse'>create_ellipse</span><span class='lparen'>(</span><span class='id identifier rubyid_center'>center</span><span class='comma'>,</span> <span class='id identifier rubyid_hradius'>hradius</span><span class='comma'>,</span> <span class='id identifier rubyid_vradius'>vradius</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_points'>points</span> <span class='op'>=</span> <span class='id identifier rubyid_create_ellipse'>create_ellipse</span><span class='lparen'>(</span><span class='id identifier rubyid_center'>center</span><span class='comma'>,</span> <span class='id identifier rubyid_h_radius'>h_radius</span><span class='comma'>,</span> <span class='id identifier rubyid_v_radius'>v_radius</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_kml_ellipse'>kml_ellipse</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
                   &lt;name&gt;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ellipse'>ellipse</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>&lt;/name&gt;
@@ -1130,29 +1369,60 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a line to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>line</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Line.html" title="Line (class)">Line</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the line to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-215
-216
-217
-218
-219
-220
-221
-222
-223
 224
 225
 226
 227
-228</pre>
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 215</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 224</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_line'>visit_line</span><span class='lparen'>(</span><span class='id identifier rubyid_line'>line</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_kml_line'>kml_line</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
@@ -1182,25 +1452,56 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a point to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>point</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the point to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-204
-205
-206
-207
-208
-209
-210
 211
 212
-213</pre>
+213
+214
+215
+216
+217
+218
+219
+220</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 211</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_point'>visit_point</span><span class='lparen'>(</span><span class='id identifier rubyid_point'>point</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_kml_point'>kml_point</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>&lt;Placemark&gt;
@@ -1226,30 +1527,61 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a polygon to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>polygon</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Polygon.html" title="Polygon (class)">Polygon</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the polygon to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
 241
 242
 243
-244</pre>
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 241</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_polygon'>visit_polygon</span><span class='lparen'>(</span><span class='id identifier rubyid_polygon'>polygon</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_polygon'>polygon</span><span class='period'>.</span><span class='id identifier rubyid_points'>points</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_polygon'>polygon</span><span class='period'>.</span><span class='id identifier rubyid_points'>points</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='id identifier rubyid_polygon'>polygon</span><span class='period'>.</span><span class='id identifier rubyid_points'>points</span><span class='lbracket'>[</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>!=</span> <span class='id identifier rubyid_polygon'>polygon</span><span class='period'>.</span><span class='id identifier rubyid_points'>points</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
@@ -1280,39 +1612,70 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Add a rectangle to the kml file</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>rectangle</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Rectangle.html" title="Rectangle (class)">Rectangle</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the rectangle to add</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257</pre>
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'src/kml_maker.rb', line 246</span>
+      <pre class="code"><span class="info file"># File 'lib/kml_maker.rb', line 259</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_visit_rectangle'>visit_rectangle</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_startpt'>startpt</span> <span class='op'>=</span> <span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
-  <span class='id identifier rubyid_rectpoints'>rectpoints</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_rectpoints'>rectpoints</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_startpt'>startpt</span>
-  <span class='id identifier rubyid_rectpoints'>rectpoints</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_startpt'>startpt</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_vertical'>vertical</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_startpt'>startpt</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_rectpoints'>rectpoints</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_startpt'>startpt</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_vertical'>vertical</span><span class='rparen'>)</span><span class='comma'>,</span>
-                          <span class='id identifier rubyid_startpt'>startpt</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_horizontal'>horizontal</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_rectpoints'>rectpoints</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_startpt'>startpt</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span><span class='comma'>,</span> <span class='id identifier rubyid_startpt'>startpt</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_horizontal'>horizontal</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_rectpoints'>rectpoints</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_startpt'>startpt</span>
+  <span class='id identifier rubyid_start_point'>start_point</span> <span class='op'>=</span> <span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span>
+  <span class='id identifier rubyid_rect_points'>rect_points</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_rect_points'>rect_points</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_start_point'>start_point</span>
+  <span class='id identifier rubyid_rect_points'>rect_points</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_start_point'>start_point</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_vertical'>vertical</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_start_point'>start_point</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rect_points'>rect_points</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_start_point'>start_point</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_vertical'>vertical</span><span class='rparen'>)</span><span class='comma'>,</span>
+                           <span class='id identifier rubyid_start_point'>start_point</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_horizontal'>horizontal</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rect_points'>rect_points</span> <span class='op'>&lt;&lt;</span> <span class='const'><span class='object_link'><a href="Point.html" title="Point (class)">Point</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Point.html#initialize-instance_method" title="Point#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_start_point'>start_point</span><span class='period'>.</span><span class='id identifier rubyid_latitude'>latitude</span><span class='comma'>,</span> <span class='id identifier rubyid_start_point'>start_point</span><span class='period'>.</span><span class='id identifier rubyid_longitude'>longitude</span> <span class='op'>+</span> <span class='id identifier rubyid_meters_to_degrees'>meters_to_degrees</span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_horizontal'>horizontal</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_rect_points'>rect_points</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_start_point'>start_point</span>
 
-  <span class='id identifier rubyid_visit_polygon'>visit_polygon</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Polygon.html" title="Polygon (class)">Polygon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Line.html#initialize-instance_method" title="Line#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_rectpoints'>rectpoints</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_visit_polygon'>visit_polygon</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Polygon.html" title="Polygon (class)">Polygon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Line.html#initialize-instance_method" title="Line#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_rectangle'>rectangle</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_rect_points'>rect_points</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1324,7 +1687,7 @@
 </div>
 
       <div id="footer">
-  Generated on Thu May 11 11:01:21 2023 by
+  Generated on Wed May 17 10:41:09 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.28 (ruby-3.2.0).
 </div>
