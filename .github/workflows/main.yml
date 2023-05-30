@@ -12,4 +12,4 @@ jobs:
     steps:
       - run: |
           gem install ocra
-          ocra ../lib/come_ui.rb -o come.exe
+          ocra lib\come_ui.rb -o come.exe
