@@ -1,0 +1,15 @@
+name: Run commands on different operating systems
+on:
+  push:
+    branches: [ release/* ]
+  pull_request:
+    branches: [ release/* ]
+
+jobs:
+  Create-exec-windows:
+    name: Package an exec on Windows
+    runs-on: windows-2019
+    steps:
+      - run: |
+          gem install ocra
+          ocra lib/come_ui.rb -o come.exe
