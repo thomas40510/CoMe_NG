@@ -1,6 +1,8 @@
 # Projet Compilation S4 (CoMe_NG)
 CoMe_Ng, le cousin éloigné de Melissa
 
+Rendu obsolète par son petit frère [CUJaS (Convertisseur unifié en Java pour les SiTac)](https://github.com/thomas40510/CUJaS).
+
 ## Objectifs du projet
 La création d'un compilateur, composé impérativement :
 - d'un _lexer_
